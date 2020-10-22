@@ -1,4 +1,4 @@
-import s from '../../styles/layout/Mobile.module.css';
+import s from '../styles/layout/Mobile.module.css';
 
 const Mobile = ({children}) => {
   return(
