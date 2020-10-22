@@ -1,10 +1,9 @@
-import Mobile from '../layout/mobile';
+import Mobile from '../layout/mobile.jsx';
 import Head from 'next/head'
 
 const Main = () => {
   return(
-    <>
-      
+    <>      
       <Head>
         <title>Pemilo</title>
         <meta charSet="utf-8" />
@@ -12,7 +11,6 @@ const Main = () => {
       </Head>
 
       <Mobile></Mobile>
-
     </>
   );
 }
