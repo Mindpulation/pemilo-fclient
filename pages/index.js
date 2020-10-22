@@ -1,10 +1,22 @@
-import Head from 'next/head';
+import Mobile from '../component/landingPage/mobile';
+import Head from 'next/head'
 
-import s from '../styles/page/roomCode.module.css';
 
 const roomCode = () => {
   return(
-    <div></div>
+    <>
+
+      <Head>
+        <title>Pemilo</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+
+      <Mobile>
+        
+      </Mobile>
+
+    </>
   );
 }
 
