@@ -1,23 +1,20 @@
-import Mobile from '../component/landingPage/mobile';
+import Mobile from '../layout/mobile';
 import Head from 'next/head'
 
-
-const roomCode = () => {
+const Main = () => {
   return(
     <>
-
+      
       <Head>
         <title>Pemilo</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
 
-      <Mobile>
-        
-      </Mobile>
+      <Mobile></Mobile>
 
     </>
   );
 }
 
-export default roomCode;
+export default Main;
