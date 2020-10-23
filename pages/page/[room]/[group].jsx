@@ -22,8 +22,14 @@ const Group = () => {
 
       <Mobile>
         <div className={St.row1}>
-          <span className={St.txtHead}>Position <span className={St.txtSideHead}>{group}</span> </span>
+          <span className={St.txtHead}>Position <span className={St.txtSideHead}>{group}</span></span>
         </div>
+
+        <div className={St.row2}>
+          <div className={St.wrap}>
+            
+          </div>
+        </div>        
       </Mobile>
 
     </React.Fragment>
