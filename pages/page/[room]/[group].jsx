@@ -2,8 +2,10 @@ import React from 'react';
 import Head from 'next/head';
 import Mobile from '../../../layout/mobile.jsx';
 import St from '../../../styles/page/Group.module.css';
+import ImageBlur from '../../../components/image/blur.jsx';
 
 import { useLink } from '../../../hooks/index.js';
+
 
 const Group = () => {
 
@@ -27,7 +29,7 @@ const Group = () => {
 
         <div className={St.row2}>
           <div className={St.wrap}>
-            
+            <ImageBlur src={"/pemilo.svg"} ></ImageBlur>
           </div>
         </div>        
       </Mobile>
