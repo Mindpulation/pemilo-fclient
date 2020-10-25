@@ -1,0 +1,34 @@
+.row1{
+  width: 100%;  
+  text-align: center;
+  padding: 20px 10px;  
+}
+
+.txtHead{
+  color: #666666;
+  font-weight: 600;
+  font-size: xx-large;
+}
+
+.txtSideHead{
+  color: #6EADE8;  
+}
+
+.row2{
+  width: 100%;
+  padding: 15px 0px;
+}
+
+.wrap{
+  width: 100%;
+  height: auto;  
+  overflow: auto;
+  min-height: 65px;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -ms-overflow-y: hidden;
+  border: 1px solid #b3b3b3;
+  border-radius: 5px;
+  padding: 7px
+}
+
