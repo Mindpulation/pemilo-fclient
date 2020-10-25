@@ -1,0 +1,72 @@
+.container{
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.row{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.icon{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.title{
+  width: 90%;
+  font-size: medium;
+  text-align: center;
+  margin: auto;
+}
+.instruction{
+  width: 85%;
+  font-size: larger;
+  text-align: center;
+  margin: auto;
+}
+.column{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.input{
+  width: 90%;
+  margin: auto;
+  margin-bottom: 20px;
+  padding: 10px;
+  padding-right: 0px;
+  border-radius: 12px;
+  border: solid 2px  #00000020;
+  font-size: medium;
+}
+.input:focus{
+  outline: none;
+  border: solid 3px #5096D7;
+}
+.btn{
+  border-radius: 8px;
+  width: 150px;
+  height: 45px;
+  background-color: #6EADE8;
+  font-size: larger;
+  font-weight: bold;
+  color: #ffffff;
+  outline: none;
+  border: 2px solid #00000010;
+  margin: auto;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+.btn:hover{
+  background-color: #5096D7;
+}
+.link{
+  margin: auto;
+  font-size: larger;
+  font-weight: bold;
+  color: #6EADE8;
+  cursor: pointer;
+}
