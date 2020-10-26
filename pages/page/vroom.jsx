@@ -3,6 +3,7 @@ import s from '../../styles/page/Vroom.module.css'
 import Mobile from '../../layout/mobile'
 import React from 'react'
 import ImageBlur from '../../components/image/blur'
+import Link from 'next/link'
 
 const Vroom = () => {
   return(
@@ -33,10 +34,10 @@ const Vroom = () => {
 
             <input type="text" name="password" id="Rpassword" className={s.input} placeholder="Room Password"/>
 
-            <input type="button" value="masuk" className={s.btn}/>
+            <Link href="/page/vmail"><input type="button" value="masuk" className={s.btn}/></Link>
             
             <div className={s.row}>
-              <a className={s.link}> Ingin menjadi admin </a>
+              <span className={s.link}> Ingin menjadi admin </span>
             </div>
 
           </div>
