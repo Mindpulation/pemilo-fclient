@@ -8,10 +8,10 @@ const GLOBALCONTEXT = ({children}) => {
 
   const [stateModal1, disModal1] = useReducer(reduceModal1, false);
 
-  const wrapStateModal1 = useMemo( 
-    ()=>({
-      stateModal1
-    },[stateModal1])
+  const wrapStateModal1 = useMemo(
+    ()=>{
+      return stateModal1
+    },[stateModal1]
   );
 
   return(
