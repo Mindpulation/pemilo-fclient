@@ -1,4 +1,3 @@
-import Mobile from '../layout/mobile.jsx';
 import Head from 'next/head'
 
 const Main = () => {
@@ -8,9 +7,7 @@ const Main = () => {
         <title>Pemilo</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-
-      <Mobile></Mobile>
+      </Head>      
     </>
   );
 }

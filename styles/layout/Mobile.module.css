@@ -6,3 +6,9 @@
   padding: 25px 10px;  
   /* border: 1px solid black; */
 }
+
+@media screen and (max-width: 425px){
+  .content{
+    width: 100%;
+  }
+}
