@@ -1,8 +1,8 @@
-import React, { useMemo, useReducer } from 'react';
+import { MODALCONTEXT1 } from './val';
+import { useMemo, useReducer } from 'react';
 import { reduceModal1 } from '../reducer/index';
 
-const STATEMODALCONTEXT1 = React.createContext();
-const DISPATCHMODALCONTEXT1 = React.createContext();
+const { STATEMODALCONTEXT1, DISPATCHMODALCONTEXT1 } = MODALCONTEXT1;
 
 const GLOBALCONTEXT = ({children}) => {
 

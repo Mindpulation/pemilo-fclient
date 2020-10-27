@@ -1,9 +1,7 @@
 const Confirm = () => {
-
   return(
-    <div>Testing</div>
-  );
-
+    <div></div>
+  )
 }
 
 export default Confirm;
