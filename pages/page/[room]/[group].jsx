@@ -8,8 +8,7 @@ import ImageBlur from '../../../components/image/blur.jsx';
 
 import { useLink } from '../../../hooks/index.js';
 
-
-const Group = () => {
+const Group = React.memo( () => {
 
   console.log("Render Group");
 
@@ -59,6 +58,6 @@ const Group = () => {
     </React.Fragment>
   );
 
-}
+});
 
 export default Group;

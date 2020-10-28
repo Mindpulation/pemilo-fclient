@@ -1,14 +1,7 @@
-import axios from 'redaxios';
+import wrap from './wrap';
 
-const wrapReturn = (sta = true, param = {}) => {
-  return {status : sta, data : param.data};
-}
+const testing = new wrap("https://jsonplaceholder.typicode.com");
 
 export const testingUse = async () => {
-  try {
-    const res = await axios.get("https://jsonplaceholder.typicode.com/post");
-    return wrapReturn(true, res);
-  } catch (error) {
-    return wrapReturn(false);
-  }
+  return await testing.get('/posts');
 }
