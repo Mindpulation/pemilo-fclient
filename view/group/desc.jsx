@@ -9,8 +9,6 @@ const { STATEREDUCER } = REDUCER;
 
 const Desc = ({fallback = null}) => {
 
-  console.log("Desc");
-
   const state = useContext(STATEREDUCER);    
 
   const { data } = useSWR(`/api/testing/detail/${state.groupDesc}`, ()=>testingDetailUse(state.groupDesc));
@@ -27,11 +25,15 @@ const Desc = ({fallback = null}) => {
       <React.Fragment>
         <div className={St.box}>
           <div className={St.visi}>
-            <h4 className={St.headertxt}>Visi</h4>
+            <div  className={St.headertxt}>
+              <span>Visi</span>
+            </div>
             <span className={St.destxt}>{data.data.title}</span>
           </div>
           <div className={St.misi}>
-            <h4 className={St.headertxt}>Misi</h4>
+            <div  className={St.headertxt}>
+              <span>Misi</span>
+            </div>
             <span className={St.destxt}>{data.data.body}</span>
           </div>
         </div>

@@ -9,11 +9,14 @@ import { OBJACTIONS } from '../../global/actions/val';
 
 const { DISPATCHREDUCER } = REDUCER;
 
+const reduceName = (param = new String()) => {
+  let tmp = param.split(' ');
+  return (tmp.length >= 2) ? tmp[0]+' '+tmp[1] : tmp[0];
+}
+
 const ListImage = ({fallback = null}) => {
 
   const disGroup = useContext(DISPATCHREDUCER);
-
-  console.log("Render List");
 
   const resTesting = useSWR('/api/testing',()=>testingUse());    
 
@@ -30,15 +33,18 @@ const ListImage = ({fallback = null}) => {
   }
   else if(resTesting.data != undefined){    
     return(
-      <React.Fragment>                   
+      <React.Fragment>
         {
           resTesting.data.data.map((e, i)=>{
             return(
-              <Image onClick={()=>{atClickImage(e.id)}} className={St.content} key={i} width={100} height={100} src={e.url}></Image>
+              <div className={St.box}>
+                <Image onClick={()=>{atClickImage(e.id)}} className={St.content} key={i} width={100} height={100} src={e.url}></Image>
+                <p className={St.txt}>{reduceName(e.title)}</p>
+              </div>
             );
           })
-        }        
-      </React.Fragment>
+        }    
+      </React.Fragment>          
     );
   }
 }

@@ -1,0 +1,31 @@
+.box{  
+  margin-top: 10px;
+  border: 1px solid lightgray;
+  border-radius: 7px;
+  padding: 20px;
+  padding-top: 0px;
+}
+
+.visi{
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.headertxt{
+  font-size: x-large;
+  color: #6EADE8;
+  font-weight: 500;  
+  padding-bottom: 7px;  
+} 
+
+.misi{
+  padding-bottom: 25px;
+}
+
+.destxt{
+  font-size: 13.5px;
+  font-weight: 400;
+  color: #262626;
+  text-align: justify;
+}
+

@@ -1,4 +1,11 @@
-.content{  
-  padding: 5px;
+.box{
+  padding-right: 15px;  
+}
+.content{    
   border-radius: 100%;
+}
+
+.txt{ 
+  font-size: small;
+  text-align: center;  
 }

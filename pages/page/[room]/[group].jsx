@@ -9,8 +9,6 @@ import { useLink } from '../../../hooks/index.js';
 
 const Group = React.memo(() => {  
 
-  console.log("Render Group");
-
   const { group } = useLink();
 
   return(    
