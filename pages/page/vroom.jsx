@@ -5,8 +5,8 @@ import React from 'react'
 import ImageBlur from '../../components/image/blur'
 import Link from 'next/link'
 
-const Vroom = React.memo(
-  () => {
+const Vroom = () => {
+  console.log(`welcome to validate room`)
     return(
       <React.Fragment>
         
@@ -49,6 +49,5 @@ const Vroom = React.memo(
       </React.Fragment>
     )
   }
-)
 
 export default Vroom;

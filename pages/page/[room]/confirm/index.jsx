@@ -19,11 +19,11 @@ const Confirm = React.memo(
     }
   
     return(
-      <div>
+      <React.Fragment>
         
         <ModalValid></ModalValid>
         <button onClick={validModalShow} >Show Modal</button>
-      </div>
+      </React.Fragment>
     )
   }
 )
