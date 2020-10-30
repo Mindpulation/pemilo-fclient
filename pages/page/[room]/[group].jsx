@@ -32,9 +32,7 @@ const Group = () => {
 
         <div className={St.row2}>
           <div className={St.wrap}>            
-            <ErrorBoundary>          
-              <ListImage fallback={<div>Loading..</div>}></ListImage>          
-            </ErrorBoundary>          
+            <ListImage fallback={<div>Loading..</div>}></ListImage>                      
           </div>
         </div>  
 

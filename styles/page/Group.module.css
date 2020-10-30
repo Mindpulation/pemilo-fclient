@@ -15,20 +15,14 @@
 }
 
 .row2{
-  width: 100%;
-  padding: 20px 0px;    
+  display: inline-block;  
+  overflow-x: auto;  
+  overflow-y: hidden;
+  width: 100%;  
 }
 
 .wrap{
-  width: 100%;
-  height: auto;  
-  overflow: auto;
-  min-height: 65px;
-  overflow-y: hidden;
-  white-space: nowrap;
-  -ms-overflow-y: hidden;
-  /* border: 1px solid #b3b3b3; */
-  border-radius: 7px;      
+  display: inline-flex;  
 }
 
 

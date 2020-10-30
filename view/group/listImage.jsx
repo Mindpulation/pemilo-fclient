@@ -1,7 +1,9 @@
 import useSWR from 'swr';
 import React from 'react';
+import Image from 'next/image';
 import { testingUse } from '../../api/index';
-import ImageBlur from '../../components/image/blur.jsx';
+
+import St from '../../styles/view/group/ListImage.module.css';
 
 const ListImage = ({fallback = null}) => {
 
@@ -22,7 +24,7 @@ const ListImage = ({fallback = null}) => {
         {
           resTesting.data.data.map((e, i)=>{
             return(
-              <ImageBlur key={i} src={e.url} placeholder={e.thumbnailUrl} ></ImageBlur>
+              <Image className={St.content} key={i} width={100} height={100} src={e.url}></Image>
             );
           })
         }        
