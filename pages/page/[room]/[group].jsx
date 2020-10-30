@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Head from 'next/head';
 import Mobile from '../../../layout/mobile.jsx';
 import Desc from '../../../view/group/desc.jsx';
@@ -7,8 +7,7 @@ import ListImage from  '../../../view/group/listImage.jsx';
 
 import { useLink } from '../../../hooks/index.js';
 
-
-const Group = () => {
+const Group = React.memo(() => {  
 
   console.log("Render Group");
 
@@ -35,13 +34,13 @@ const Group = () => {
           </div>
         </div>  
 
-        <Desc fallback={<div>Loading..</div>}  ></Desc>
+        <Desc fallback={<div>Loading..</div>} ></Desc>
 
       </Mobile>        
 
     </React.Fragment>
   );
 
-}
+});
 
 export default Group;

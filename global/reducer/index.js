@@ -24,13 +24,10 @@ export function reduceModal1(state, action){
 
 export const reducer = (state, action) => {
 
-  let { groupDesc } = state;
-
   switch (action.tipe) {
 
-    case OBJ_ACTIONS.CHANGE_DATA_GROUP_DESC:
-      groupDesc = action.payload;
-      return state;
+    case OBJ_ACTIONS.CHANGE_DATA_GROUP_DESC:      
+      return { groupDesc : action.payload };
   
     default:
       return state;

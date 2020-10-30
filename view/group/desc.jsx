@@ -1,13 +1,19 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import useSWR from 'swr';
-
+import { REDUCER } from '../../global/context/val'
 import St from '../../styles/view/group/Desc.module.css';
 
 import { testingDetailUse } from '../../api/index';
 
-const Desc = ({id, fallback = null}) => {
+const { STATEREDUCER } = REDUCER;
 
-  const { data } = useSWR('/api/testing/detail', ()=>testingDetailUse(id));
+const Desc = ({fallback = null}) => {
+
+  console.log("Desc");
+
+  const state = useContext(STATEREDUCER);    
+
+  const { data } = useSWR(`/api/testing/detail/${state.groupDesc}`, ()=>testingDetailUse(state.groupDesc));
 
   if(data == undefined){
     return(

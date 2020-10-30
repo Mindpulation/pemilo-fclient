@@ -16,15 +16,9 @@ const GLOBALCONTEXT = ({children}) => {
     },[stateModal1]
   );
 
-  const wrapState = useMemo(
-    ()=>{
-      return state
-    },[state]
-  );
-
   return(
     <DISPATCHREDUCER.Provider value={dispatch}>
-      <STATEREDUCER.Provider value={wrapState}>
+      <STATEREDUCER.Provider value={state}>
         <DISPATCHMODALCONTEXT1.Provider value={disModal1}>
           <STATEMODALCONTEXT1.Provider value={wrapStateModal1}>
             {children}
