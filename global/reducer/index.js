@@ -1,6 +1,7 @@
-import { actionModal } from '../actions/index';
+import { actionModal, actions } from '../actions/index';
 
 const OBJ_MODAL1 = actionModal("Modal1");
+const OBJ_ACTIONS = actions();
 
 export function reduceModal1(state, action){
 
@@ -16,6 +17,23 @@ export function reduceModal1(state, action){
   
     default:
       return state;      
+
+  }
+
+}
+
+export const reducer = (state, action) => {
+
+  let { groupDesc } = state;
+
+  switch (action.tipe) {
+
+    case OBJ_ACTIONS.CHANGE_DATA_GROUP_DESC:
+      groupDesc = action.payload;
+      return state;
+  
+    default:
+      return state;
 
   }
 

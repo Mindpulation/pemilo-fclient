@@ -1,11 +1,9 @@
-'use strict'
-
 import React from 'react';
 import Head from 'next/head';
 import Mobile from '../../../layout/mobile.jsx';
+import Desc from '../../../view/group/desc.jsx';
 import St from '../../../styles/page/Group.module.css';
 import ListImage from  '../../../view/group/listImage.jsx';
-import ErrorBoundary from '../../../components/error/err.jsx';
 
 import { useLink } from '../../../hooks/index.js';
 
@@ -26,6 +24,7 @@ const Group = () => {
       </Head>
 
       <Mobile>
+        
         <div className={St.row1}>
           <span className={St.txtHead}>Position <span className={St.txtSideHead}>{group}</span></span>
         </div>
@@ -35,6 +34,8 @@ const Group = () => {
             <ListImage fallback={<div>Loading..</div>}></ListImage>                      
           </div>
         </div>  
+
+        <Desc fallback={<div>Loading..</div>}  ></Desc>
 
       </Mobile>        
 
