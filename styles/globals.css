@@ -12,4 +12,18 @@ a {
 
 * {
   box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #cccccc #e6e6e6;  
+}
+
+*::-webkit-scrollbar {
+  width: auto;  
+  height: 7px;
+}
+*::-webkit-scrollbar-track {
+  background: #e6e6e6;
+}
+*::-webkit-scrollbar-thumb {
+  background-color:#cccccc;
+  border-radius: 2px;  
 }

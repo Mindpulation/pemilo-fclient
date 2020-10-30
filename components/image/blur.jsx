@@ -1,7 +1,7 @@
 import { LazyLoadImage, trackWindowScroll } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-const ImageBlur = ({ scrollPosition, src, width =100, height = 100 ,className, wrapClassName}) => {
+const ImageBlur = ({ scrollPosition, src, width =100, height = 100 ,className, wrapClassName, placeholder = "/pemilo.svg"}) => {
   return(
     <LazyLoadImage            
       scrollPosition = {scrollPosition}            
@@ -11,7 +11,7 @@ const ImageBlur = ({ scrollPosition, src, width =100, height = 100 ,className, w
       height = {height}
       threshold = {500}      
       className = {className}
-      placeholderSrc = {"/pemilo.svg"}
+      placeholderSrc = {placeholder}
       wrapperClassName = {wrapClassName}
     />    
   );
