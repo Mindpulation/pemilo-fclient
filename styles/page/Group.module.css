@@ -1,7 +1,8 @@
 .row1{
   width: 100%;  
   text-align: center;
-  padding: 20px 10px;  
+  padding: 15px 10px;  
+  padding-bottom: 40px;
 }
 
 .txtHead{
@@ -27,6 +28,26 @@
 
 .wrap{  
   display: inline-flex;  
+}
+
+.framebtn{
+  width: 100%;  
+  padding-top: 15px;
+  padding-bottom: 50px;  
+}
+
+.btn{
+ padding: 12.5px 30px;
+ color: white;
+ border: 1px solid white;
+ background-color: #6EADE8;
+ font-weight: bold; 
+ border-radius: 7px;
+ cursor: pointer; 
+}
+
+.btn:hover{
+  background-color: #85baeb;
 }
 
 

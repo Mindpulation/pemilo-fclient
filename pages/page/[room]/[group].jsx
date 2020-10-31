@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import Mobile from '../../../layout/mobile.jsx';
 import Desc from '../../../view/group/desc.jsx';
@@ -33,6 +33,10 @@ const Group = React.memo(() => {
         </div>  
 
         <Desc fallback={<div>Loading..</div>} ></Desc>
+
+        <div className={St.framebtn}>
+          <button onClick={()=>{}} className={St.btn} >PILIH</button>
+        </div>
 
       </Mobile>        
 

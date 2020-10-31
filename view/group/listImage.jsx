@@ -1,4 +1,4 @@
-import useSWR, {mutate} from 'swr';
+import useSWR from 'swr';
 import React,{useContext} from 'react';
 import Image from 'next/image';
 import { testingUse } from '../../api/index';
@@ -25,7 +25,7 @@ const ListImage = ({fallback = null}) => {
   }
 
   if(resTesting.data == undefined){        
-    return (
+    return (      
       <React.Fragment>
         {fallback}
       </React.Fragment>
@@ -37,8 +37,8 @@ const ListImage = ({fallback = null}) => {
         {
           resTesting.data.data.map((e, i)=>{
             return(
-              <div className={St.box}>
-                <Image onClick={()=>{atClickImage(e.id)}} className={St.content} key={i} width={100} height={100} src={e.url}></Image>
+              <div className={St.box} key={i}>
+                <Image onClick={()=>{atClickImage(e.id)}} className={St.content} width={100} height={100} src={e.url}></Image>
                 <p className={St.txt}>{reduceName(e.title)}</p>
               </div>
             );
