@@ -1,17 +1,13 @@
-'use strict'
-
 import React from 'react';
 import Head from 'next/head';
 import Mobile from '../../../layout/mobile.jsx';
+import Desc from '../../../view/group/desc.jsx';
 import St from '../../../styles/page/Group.module.css';
-import ImageBlur from '../../../components/image/blur.jsx';
+import ListImage from  '../../../view/group/listImage.jsx';
 
 import { useLink } from '../../../hooks/index.js';
 
-
-const Group = () => {
-
-  console.log("Render Group");
+const Group = React.memo(() => {  
 
   const { group } = useLink();
 
@@ -25,40 +21,28 @@ const Group = () => {
       </Head>
 
       <Mobile>
+        
         <div className={St.row1}>
           <span className={St.txtHead}>Position <span className={St.txtSideHead}>{group}</span></span>
         </div>
 
         <div className={St.row2}>
-          <div className={St.wrap}>
-            <ImageBlur src={"/pemilo.svg"} ></ImageBlur>
-            <ImageBlur src={"/pemilo.svg"} ></ImageBlur>
-            <ImageBlur src={"/pemilo.svg"} ></ImageBlur>
-            <ImageBlur src={"/pemilo.svg"} ></ImageBlur>
-            <ImageBlur src={"/pemilo.svg"} ></ImageBlur>
-            <ImageBlur src={"/pemilo.svg"} ></ImageBlur>
-            <ImageBlur src={"/pemilo.svg"} ></ImageBlur>
-            <ImageBlur src={"/pemilo.svg"} ></ImageBlur>
-            <ImageBlur src={"/pemilo.svg"} ></ImageBlur>
-            <ImageBlur src={"/pemilo.svg"} ></ImageBlur>
-            <ImageBlur src={"/pemiloSmall.svg"} ></ImageBlur>
-            <ImageBlur src={"/pemiloSmall.svg"} ></ImageBlur>
-            <ImageBlur src={"/pemiloSmall.svg"} ></ImageBlur>
-            <ImageBlur src={"/pemiloSmall.svg"} ></ImageBlur>
-            <ImageBlur src={"/pemiloSmall.svg"} ></ImageBlur>
-            <ImageBlur src={"/pemiloSmall.svg"} ></ImageBlur>
-            <ImageBlur src={"/pemiloSmall.svg"} ></ImageBlur>
-            <ImageBlur src={"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Ff%2Ff1%2FIcons8_flat_linux.svg%2F600px-Icons8_flat_linux.svg.png&f=1&nofb=1"} ></ImageBlur>
+          <div className={St.wrap}>            
+            <ListImage fallback={<div>Loading..</div>}></ListImage>                      
           </div>
-        </div>       
+        </div>  
 
-        
+        <Desc fallback={<div>Loading..</div>} ></Desc>
 
-      </Mobile>
+        <div className={St.framebtn}>
+          <button onClick={()=>{}} className={St.btn} >PILIH</button>
+        </div>
+
+      </Mobile>        
 
     </React.Fragment>
   );
 
-}
+});
 
 export default Group;

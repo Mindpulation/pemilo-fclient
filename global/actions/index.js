@@ -1,4 +1,4 @@
-import { OBJMODAL } from './val';
+import { OBJMODAL, OBJACTIONS } from './val';
 
 export function actionModal(param = new String()){
   let OBJ = OBJMODAL;
@@ -7,3 +7,4 @@ export function actionModal(param = new String()){
   return OBJ;
 }
 
+export const actions = () => OBJACTIONS;

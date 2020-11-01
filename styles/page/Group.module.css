@@ -1,7 +1,8 @@
 .row1{
   width: 100%;  
   text-align: center;
-  padding: 20px 10px;  
+  padding: 15px 10px;  
+  padding-bottom: 40px;
 }
 
 .txtHead{
@@ -15,20 +16,38 @@
 }
 
 .row2{
-  width: 100%;
-  padding: 20px 0px;  
+  display: inline-block;  
+  overflow-x: auto;  
+  overflow-y: hidden;
+  width: 100%; 
+  border: 1px solid lightgray; 
+  padding: 10px;
+  padding-bottom: 0px;
+  border-radius: 7px;
 }
 
-.wrap{
-  width: 100%;
-  height: auto;  
-  overflow: auto;
-  min-height: 65px;
-  overflow-y: hidden;
-  white-space: nowrap;
-  -ms-overflow-y: hidden;
-  /* border: 1px solid #b3b3b3; */
-  border-radius: 5px;
-  padding: 7px;  
+.wrap{  
+  display: inline-flex;  
 }
+
+.framebtn{
+  width: 100%;  
+  padding-top: 15px;
+  padding-bottom: 50px;  
+}
+
+.btn{
+ padding: 12.5px 30px;
+ color: white;
+ border: 1px solid white;
+ background-color: #6EADE8;
+ font-weight: bold; 
+ border-radius: 7px;
+ cursor: pointer; 
+}
+
+.btn:hover{
+  background-color: #85baeb;
+}
+
 
