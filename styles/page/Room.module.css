@@ -46,6 +46,10 @@
   border-radius: 7px;
 }
 
+.row3 .btn:hover{
+  background-color: #85baeb;
+}
+
 .row3 .framelink{
   padding-top: 15px;    
   font-weight: 300;
