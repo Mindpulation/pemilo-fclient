@@ -1,4 +1,57 @@
 .container{
+  width: 100%;
   text-align: center;
 }
+
+.row1{
+  padding: 22.5px;
+  padding-top: 15px;
+  padding-bottom: 25px;
+}
+
+.frameimg{
+  width: 100%;
+  display: flex;  
+  justify-content: center;
+  padding-bottom: 15px;
+}
+
+.txthead1{
+  color: #404040;
+  font-size: larger;
+  font-weight: 500;
+  padding-bottom: 25px;
+}
+
+.txt{
+  color: #404040;
+  font-size: 14px;
+  padding-bottom: 15px;  
+}
+
+.row3{  
+  padding: 20px;
+  padding-top: 15px;
+  padding-bottom: 25px;
+}
+
+.row3 .btn{
+  padding: 10px 25px;  
+  color: white;
+  background-color: #6EADE8;
+  font-weight: bold;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 7px;
+}
+
+.row3 .framelink{
+  padding-top: 15px;    
+  font-weight: 300;
+  color: #3385ff;
+  font-size: small;
+  cursor: pointer;
+} 
+
 
