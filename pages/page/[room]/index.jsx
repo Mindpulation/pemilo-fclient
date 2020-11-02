@@ -29,15 +29,15 @@ const Room = () => {
             </div>
 
             <div className={St.txthead1}>
-              <span>hey! kamu udah tau blom siapa kandidatnya?</span>
+              <span>Hey! kamu udah tau blom siapa kandidatnya?</span>
             </div>
 
             <div className={St.txt}>
-              <span>di tahap ke tiga ini kamu akan melihat para kandidat dan akan memilih siapa kandiat mu</span>
+              <span>Di tahap ke <b>tiga</b> ini kamu akan melihat para <b>kandidat</b> dan akan <b>memilih</b> siapa <b>kandiat</b> mu</span>
             </div>
 
             <div className={St.txt}>
-              <span>dari posisi ini mana yang ingin kamu lihat terlebih dahulu</span>
+              <span>Dari <b>posisi</b> ini mana yang ingin kamu lihat terlebih dahulu</span>
             </div>
           </div>
 
@@ -46,7 +46,7 @@ const Room = () => {
           </div>
 
           <div className={St.row3}>
-            <button onClick={()=>{}}>lanjut</button>
+            <button onClick={()=>{}} className={St.btn}>Lanjut</button>
             <div className={St.framelink}>
               <Link href={"/page/vmail"}>Kembali ke tahap ke-2</Link>
             </div>
