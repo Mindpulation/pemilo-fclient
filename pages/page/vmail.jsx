@@ -4,8 +4,8 @@ import Mobile from '../../layout/mobile'
 import React from 'react'
 import ImageBlur from '../../components/image/blur'
 
-const Vmail = React.memo(
-  () => {
+const Vmail = () => {
+  console.log(`welcome to validate email`)
     return(
       <React.Fragment>
         
@@ -42,6 +42,6 @@ const Vmail = React.memo(
       </React.Fragment>
     )
   }
-) 
+
 
 export default Vmail;
