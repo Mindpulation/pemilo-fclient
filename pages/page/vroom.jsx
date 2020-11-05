@@ -23,11 +23,11 @@ const Vroom = () => {
               <ImageBlur src={"/pemilo.svg"} ></ImageBlur>
             </div>
             <div className={s.title}>
-              <h1>hallo! selamat datang di pemilo</h1>
+              <p>hallo! selamat datang di pemilo</p>
             </div>
             <div className={s.instruction}>
-              <p>Ini adalah tahap <strong> pertama </strong> kamu, untuk menjadi pemilih</p>
-              <p>sepertinya kamu butuh <strong> Room Code, </strong> kamu bisa meminta <strong> Room Code </strong> kepada panitia</p>
+              <p>Ini adalah tahap <b> pertama </b> kamu, untuk menjadi pemilih</p>
+              <p>sepertinya kamu butuh <b> Room Code, </b> kamu bisa meminta <b> Room Code </b> kepada panitia</p>
             </div>
             <div className={s.column}>
   
@@ -35,7 +35,7 @@ const Vroom = () => {
   
               <input type="text" name="password" id="Rpassword" className={s.input} placeholder="Room Password"/>
   
-              <Link href="/page/vmail"><input type="button" value="masuk" className={s.btn}/></Link>
+              <Link href={"/page/vmail"}><input type="button" value="masuk" className={s.btn}/></Link>
               
               <div className={s.row}>
                 <span className={s.link}> Ingin menjadi admin </span>

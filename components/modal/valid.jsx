@@ -32,7 +32,7 @@ const Valid = React.memo(
               <h2 align="center">tunggu dulu!</h2>
             </div>
             <div className={s.row}>
-              <p align="center" className={s.desc}>kamu udah yakin <strong> memilih </strong> para <strong> kandidat </strong> ini? kalo <strong> sudah yakin, </strong> maka <strong> tidak bisa memilih </strong> lagi</p>
+              <p align="center" className={s.desc}>kamu udah yakin <b> memilih </b> para <b> kandidat </b> ini? kalo <b> sudah yakin, </b> maka <b> tidak bisa memilih </b> lagi</p>
             </div>
             <div className={s.row}>
               <input type="button" value="sudah yakin" className={s.btn}/>
