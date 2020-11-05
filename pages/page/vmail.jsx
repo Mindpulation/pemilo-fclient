@@ -3,6 +3,7 @@ import s from '../../styles/page/Vmail.module.css'
 import Mobile from '../../layout/mobile'
 import React from 'react'
 import ImageBlur from '../../components/image/blur'
+import Link from 'next/link'
 
 const Vmail = () => {
   console.log(`welcome to validate email`)
@@ -22,17 +23,17 @@ const Vmail = () => {
               <ImageBlur src={"/pemilo.svg"} ></ImageBlur>
             </div>
             <div className={s.title}>
-              <h1>kamu sudah masuk room</h1>
+              <p>kamu sudah masuk room</p>
             </div>
             <div className={s.instruction}>
               <p className={s.medium}>Pemilihan Osis 2000</p>
-              <p>di tahap ke <strong> dua </strong> kamu harus memasukan <strong> email </strong> yang kamu daftarkan kepada <strong> panitia </strong> sebelum <strong> room </strong> dimulai</p>
+              <p>di tahap ke <b> dua </b> kamu harus memasukan <b> email </b> yang kamu daftarkan kepada <b> panitia </b> sebelum <b> room </b> dimulai</p>
             </div>
             <div className={s.column}>
   
               <input type="email" name="mail" id="Rmail" className={s.input} placeholder="Email address"/>
   
-              <input type="button" value="lanjut" className={s.btn}/>
+              <Link href={"/page/uwu"}><input type="button" value="lanjut" className={s.btn}/></Link>
   
             </div>
           </div>

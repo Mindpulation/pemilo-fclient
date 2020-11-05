@@ -41,8 +41,16 @@ const Room = () => {
             </div>
           </div>
 
-          <div className={St.row2}>
-            {null}
+          <div className={St.col}>
+            <div className={St.row3}>
+              <Link href={"/page/uwu/position1"}><input type="button" value="Position 1" className={St.btn}/></Link>
+            </div>
+            <div className={St.row3}>
+              <Link href={"/page/uwu/position2"}><input type="button" value="Position 2" className={St.btn}/></Link>
+            </div>
+            <div className={St.row3}>
+              <Link href={"/page/uwu//position3"}><input type="button" value="Position 3" className={St.btn}/></Link>
+            </div>
           </div>
 
           <div className={St.row3}>

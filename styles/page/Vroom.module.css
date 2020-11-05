@@ -17,7 +17,8 @@
 }
 .title{
   width: 90%;
-  font-size: medium;
+  font-size: x-large;
+  font-weight: bold;
   text-align: center;
   margin: auto;
 }
@@ -48,8 +49,7 @@
 }
 .btn{
   border-radius: 8px;
-  width: 150px;
-  height: 45px;
+  padding: 10px 40px;  
   background-color: #6EADE8;
   font-size: larger;
   font-weight: bold;
