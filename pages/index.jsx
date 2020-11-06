@@ -16,7 +16,7 @@ const Main = () => {
       </Head>
 
       <div>
-        <button onClick={atClick}>Try testing function wrapsss</button>
+        <button onClick={atClick}>Try testing function sss</button>
       </div>
 
     </>
