@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Mobile from '../../../../layout/mobile'
 import St from '../../../../styles/page/Confirm.module.css';
 
 import { useRouter } from 'next/router'
@@ -15,34 +16,36 @@ const Confirm = () => {
   return(
     <React.Fragment>
 
-      <div className={St.row1}>
-        
-        <div className={St.frameimg}>
-          <Image className={St.content} src={"/pemilo.svg"} alt={"Logo Pemilo"} width={75} height={75}></Image>
-        </div>
-        
-        <div className={St.txthead1}>
-          <span></span>
-        </div>
-        
-        <div className={St.txthead2}>
-          <span></span>
-        </div>
+      <Mobile>
+        <div className={St.container}>  
+          <div className={St.row1}>
+            
+            <div className={St.frameimg}>
+              <Image className={St.content} src={"/pemilo.svg"} alt={"Logo Pemilo"} width={75} height={75}></Image>
+            </div>
+            
+            <div className={St.txthead1}>
+              <span>yay ! kamu sudah sampai di tahap akhir</span>
+            </div>
+            
+            <div className={St.txt}>
+              <span>kamu bisa melihat ulang tentang <b> kandidat </b> pilihanmu, caranya <b> tekan </b> nama/photo <b> kandidat </b> mu</span>
+            </div>
 
-      </div>
+          </div>
 
-      <div className={St.row2}>        
-        {null}
-      </div>
+          <div className={St.row2}>        
+            {null}
+          </div>
 
-      <div className={St.row3}>
-        <div className={St.frambtn}>
-          <button onClick={()=>{}}>Selesai</button>
+          <div className={St.row3}>
+            <button onClick={()=>{}} className={St.btn}>Selesai</button>
+            <div className={St.framelink}>
+              <Link href={{ pathname : '/page/[room]', query : { room : room } }}>Kembali ke tahap ke-3</Link>
+            </div>
+          </div>
         </div>
-        <div className={St.framlink}>
-          <Link href={{ pathname : '/page/[room]', query : { room : room } }}>Kembali ke tahap ke-3</Link>
-        </div>
-      </div>
+      </Mobile>
 
     </React.Fragment>
   );
