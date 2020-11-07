@@ -18,46 +18,48 @@ const ConfirmID = () => {
   return(
     <React.Fragment>
       <Mobile>
-        
-        <div className={St.row1}>
-          <span></span>
-        </div>
-
-        <div className={St.row2}>
-          <div className={St.frameimg}>
-            <Image className={St.content} src={"/pemilo.svg"} alt={"Logo Pemilo"} width={100} height={100}></Image>            
-          </div>
-          <div className={St.frametxt}>            
-            <div className={St.txtname}>
-              <span></span>
-            </div>
-            <div className={St.txtclass}>
-              <span></span>
+        <div className={St.container}>
+          <div className={St.row1}>
+            <div className={St.txthead}>
+              <span> Position <span className={St.blue}>1</span> </span>
             </div>
           </div>
-        </div>
 
-        <div className={St.row3}>
-          
-          <div className={St.visi}>
-            <div className={St.txtheadvisi}>
-              <span></span>
+          <div className={St.row2}>
+            <div className={St.frameimg}>
+              <Image className={St.content} src={"/pemilo.svg"} alt={"Logo Pemilo"} width={100} height={100}></Image>            
             </div>
-            <div className={St.txtvalvisi}>
-              <span></span>
-            </div>            
+            <div className={St.frametxt}>            
+              <div className={St.txt}>
+                <span>Amardito khairi test nama panjang</span>
+              </div>
+              <div className={St.txt}>
+                <span>XII RPL 3</span>
+              </div>
+            </div>
           </div>
 
-          <div className={St.misi}>
-            {null}
+          <div className={St.row3}>
+            
+            <div className={St.visi}>
+              <div className={St.txthead}>
+                <span className={St.blue}>Visi</span>
+              </div>
+              <div className={St.txt}>
+                <span>Menjadi seorang yang creatip dan menjadi imam yang baik </span>
+              </div>            
+            </div>
+
+            <div className={St.misi}>
+              {null}
+            </div>
+
           </div>
 
+          <div className={St.row4}>
+            <button className={St.btn} onClick={()=>{atClickBack()}}>Kembali</button>
+          </div>
         </div>
-
-        <div className={St.row4}>
-          <button onClick={()=>{atClickBack()}}>Kembali</button>
-        </div>
-
       </Mobile>
     </React.Fragment>
   );
