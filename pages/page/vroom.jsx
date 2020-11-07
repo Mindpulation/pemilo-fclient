@@ -6,25 +6,25 @@ import ImageBlur from '../../components/image/blur'
 
 import { useRouter } from 'next/router';
 import { findRoom } from '../../api/index';
-import { useSecureLocal } from '../../hooks/index';
+
+import { set } from '../../hooks/localStorage';
 
 const Vroom = () => {
   
-  const [txtroom, settxtroom] = useState("");
-  const [] = useSecureLocal("Room", );
+  const [txtroom, settxtroom] = useState("");  
 
   const router = useRouter();
 
-  const atClick = useCallback( async (param = new String())=>{        
-    console.log("Render Function");
-    console.log(settxtroom);
+  const atClick = useCallback(async (param = new String())=>{                      
+
+    set('Room', txtroom);
+
     const res = await findRoom(param);  
-    if (res === null || res === undefined){ console.log("NULL"); }
-    else{    
-      console.log(res);
-      //router.push('/page/vmail');
-    }
-  },[]);
+    
+    if (res === null || res === undefined){ /* Null */ }
+    else{/**/}            
+
+  });
 
   console.log(`welcome to validate room`)
 
