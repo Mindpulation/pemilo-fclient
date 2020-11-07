@@ -20,7 +20,6 @@
   font-weight: bold;
   padding-bottom: 25px;
 }
-
 .txt{
   color: #404040;
   font-size: large;
@@ -28,6 +27,26 @@
   max-width: 280px;
   padding-bottom: 15px; 
   margin: auto;
+}
+.profileHead{
+  font-weight: 500;
+  font-size: x-large;
+  padding-bottom: 11px;
+}
+.blue{
+  color: #6EADE8;
+}
+.row2{
+  display: flex;
+  padding: 0px 22.5px;
+  padding-bottom: 15px;
+  flex-wrap: wrap;
+
+}
+.profile {
+  width: 50%;
+  padding-top: 10px ;
+  float: left;
 }
 
 .row3{
