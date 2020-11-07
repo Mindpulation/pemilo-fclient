@@ -6,10 +6,12 @@ import ImageBlur from '../../components/image/blur'
 
 import { useRouter } from 'next/router';
 import { findRoom } from '../../api/index';
+import { useSecureLocal } from '../../hooks/index';
 
 const Vroom = () => {
   
   const [txtroom, settxtroom] = useState("");
+  const [] = useSecureLocal("Room", );
 
   const router = useRouter();
 

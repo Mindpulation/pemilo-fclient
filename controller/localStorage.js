@@ -6,7 +6,7 @@ export default function local(){}
 
 local.prototype.get = (k = new String(), init = new String()) => {
 
-  const savedLocal = enc.de(localStorage.getItem(k));
+  const savedLocal = enc.de(localStorage.getItem( enc.en(k) ));
   if (savedLocal) return JSON.parse(savedLocal);
 
   if(init instanceof Function) return init();
@@ -25,5 +25,5 @@ local.prototype.set = (k = new String(), value = new String()) => {
 
   const secureInit = enc.en(tmpinit);
 
-  localStorage.setItem(k, tmpinit);
+  localStorage.setItem( enc.en(k) , tmpinit);
 }
