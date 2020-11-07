@@ -1,12 +1,31 @@
 import Head from 'next/head'
 import s from '../../styles/page/Vroom.module.css'
 import Mobile from '../../layout/mobile'
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import ImageBlur from '../../components/image/blur'
-import Link from 'next/link'
+
+import { useRouter } from 'next/router';
+import { findRoom } from '../../api/index';
 
 const Vroom = () => {
+  
+  const [txtroom, settxtroom] = useState("");
+
+  const router = useRouter();
+
+  const atClick = useCallback( async (param = new String())=>{        
+    console.log("Render Function");
+    console.log(settxtroom);
+    const res = await findRoom(param);  
+    if (res === null || res === undefined){ console.log("NULL"); }
+    else{    
+      console.log(res);
+      //router.push('/page/vmail');
+    }
+  },[]);
+
   console.log(`welcome to validate room`)
+
     return(
       <React.Fragment>
         
@@ -31,11 +50,9 @@ const Vroom = () => {
             </div>
             <div className={s.column}>
   
-              <input type="text" name="code" id="Rcode" className={s.input} placeholder="Room Code"/>
-  
-              <input type="text" name="password" id="Rpassword" className={s.input} placeholder="Room Password"/>
-  
-              <Link href={"/page/vmail"}><input type="button" value="masuk" className={s.btn}/></Link>
+              <input onChange={(e)=>{settxtroom(e.target.value)}} type="text" name="code" id="Rcode" className={s.input} placeholder="Room Code"/>              
+                
+              <input onClick={()=>{atClick(txtroom)}} type="button" value="masuk" className={s.btn}/>
               
               <div className={s.row}>
                 <span className={s.link}> Ingin menjadi admin </span>
