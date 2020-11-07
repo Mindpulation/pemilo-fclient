@@ -34,9 +34,45 @@ const Confirm = () => {
 
           </div>
 
-          <div className={St.row2}>        
-            {null}
-          </div>
+          <div className={St.row2}>
+
+            <div className={St.profile}>
+              <div className={St.profileHead}>
+                <span className={St.blue}>Ketua</span>
+              </div>
+              <div className={St.frameimg}>
+                <Image className={St.content} src={"/pemilo.svg"} alt={"Logo Pemilo"} width={75} height={75}></Image>
+              </div>
+              <div className={St.txt}>
+                <span>Amardito Khairi</span>
+              </div>
+            </div>
+            
+            <div className={St.profile}>
+              <div className={St.profileHead}>
+                <span className={St.blue}>Wakil Ketua</span>
+              </div>
+              <div className={St.frameimg}>
+                <Image className={St.content} src={"/pemilo.svg"} alt={"Logo Pemilo"} width={75} height={75}></Image>
+              </div>
+              <div className={St.txt}>
+                <span>Amardito Khairi Test Nama Panjang</span>
+              </div>
+            </div>
+            
+            <div className={St.profile}>
+              <div className={St.profileHead}>
+                <span className={St.blue}>Anonym</span>
+              </div>
+              <div className={St.frameimg}>
+                <Image className={St.content} src={"/pemilo.svg"} alt={"Logo Pemilo"} width={75} height={75}></Image>
+              </div>
+              <div className={St.txt}>
+                <span>Amardito Khairi</span>
+              </div>
+            </div>
+
+         </div>
 
           <div className={St.row3}>
             <button onClick={()=>{}} className={St.btn}>Selesai</button>
