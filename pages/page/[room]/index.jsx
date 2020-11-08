@@ -1,14 +1,26 @@
 import React from 'react';
-import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
 import Mobile from '../../../layout/mobile';
 
 import St from '../../../styles/page/Room.module.css';
 
+import { set } from '../../../hooks/localStorage';
 import { useLink } from '../../../hooks/index';
+import { useRouter } from 'next/router';
+
+import { findPositionCandidate } from '../../../api/index';
+
+import useSWR from 'swr';
 
 const Room = () => {
+
+  const router = useRouter();
+
+  const atBack = () => {
+    set("Status", false);
+    router.push("/page/vmail");
+  }
 
   const { room } = useLink();
 
@@ -42,21 +54,13 @@ const Room = () => {
           </div>
 
           <div className={St.col}>
-            <div className={St.row3}>
-              <Link href={"/page/uwu/position1"}><input type="button" value="Position 1" className={St.btn}/></Link>
-            </div>
-            <div className={St.row3}>
-              <Link href={"/page/uwu/position2"}><input type="button" value="Position 2" className={St.btn}/></Link>
-            </div>
-            <div className={St.row3}>
-              <Link href={"/page/uwu//position3"}><input type="button" value="Position 3" className={St.btn}/></Link>
-            </div>
+            <ListRoom></ListRoom>
           </div>
 
           <div className={St.row3}>
             <button onClick={()=>{}} className={St.btn}>Lanjut</button>
             <div className={St.framelink}>
-              <Link href={"/page/vmail"}>Kembali ke tahap ke-2</Link>
+              <a onClick={atBack}>Kembali ke tahap ke-2</a>
             </div>
           </div>
         </div>
@@ -66,5 +70,46 @@ const Room = () => {
   );
 
 }
+
+const ListRoom = React.memo(()=>{
+
+  const router = useRouter();
+
+  const { room } = useLink();
+
+  const { data } = useSWR("/api/candidate/", ()=>{findPositionCandidate(room)});
+
+  const atListClick = (position = new String()) => {
+    router.push({
+      pathname: '/page/[room]/[group]',
+      query:{
+        room : room,
+        group : position
+      }
+    });
+  }
+
+  if(data.data === undefined){
+    return(
+      <div></div>
+    );
+  }
+  else{
+    return(
+      <React.Fragment>      
+        {
+          data.data.map((e,i)=>{
+            return(
+              <div className={St.row3} key={i}>
+                <input onClick={()=>{atListClick(e.position)}} type="button" value={e.position} className={St.btn}/>
+              </div>
+            )
+          })
+        }
+      </React.Fragment>
+    );
+  }
+
+});
 
 export default Room;

@@ -22,7 +22,7 @@ const Vroom = () => {
     const res = await findRoom(param);  
     
     if (res === null || res === undefined){ /* Null */ }
-    else{/**/}            
+    else{router.push('/page/vmail');}            
 
   });
 
