@@ -61,7 +61,7 @@ const Vmail = () => {
     
     //condition at true
     if(ang.message === undefined && rom === true)  {      
-      set("Anggota", JSON.stringify(ang));      
+      set("Anggota", ang);      
       router.push({
         pathname: '/page/[room]',
         query : {room : room}

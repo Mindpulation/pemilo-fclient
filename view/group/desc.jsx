@@ -9,8 +9,7 @@ const Desc = ({fallback = null, data}) => {
   const state = useContext(STATEREDUCER);    
 
   const changeToList = (param = new String()) => {
-    const changeData = param.replace(/\|}|{|}|"/g,''); 
-    console.log(changeData);
+    const changeData = param.replace(/\|}|{|}|"/g,'');     
     const spl = changeData.split(',');
     return spl;
   }

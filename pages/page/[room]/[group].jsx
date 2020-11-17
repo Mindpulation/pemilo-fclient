@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Head from 'next/head';
 import Mobile from '../../../layout/mobile.jsx';
 import Desc from '../../../view/group/desc.jsx';
@@ -7,6 +7,10 @@ import ListImage from  '../../../view/group/listImage.jsx';
 import useSWR from 'swr';
 import { getCandidateWithPositionAndRoom } from '../../../api/index.js';
 
+import {useRouter} from 'next/router';
+import {REDUCER} from '../../../global/context/val';
+import { del, set, get } from '../../../hooks/localStorage.js';
+
 export function getServerSideProps(context){
   const { group, room } = context.params
   return {
@@ -14,9 +18,37 @@ export function getServerSideProps(context){
   }
 }
 
-const Group = React.memo(({group, room}) => {   
+const { STATEREDUCER } = REDUCER;
+
+const Group = React.memo(({group, room}) => {  
+  
+  const router = useRouter();
 
   const { data } = useSWR(`/api/candidate/getCandidate`, ()=>{return getCandidateWithPositionAndRoom(room, group)} );  
+
+  const { groupDesc } = useContext(STATEREDUCER);  
+  
+  const saveChoosen = () => {
+    if(data != undefined){      
+      const tmp = data[groupDesc-1].id;              
+      const en = get("Choosen");      
+      const len = en.length;    
+      for(let i=0;i<len;i++){
+        if(en[i].position === group){
+          en[i].sta = true;
+          en[i].choose = tmp;          
+          break;
+        } 
+      }            
+      set("Choosen", en);
+      router.push({
+        pathname:'/page/[room]',
+        query:{
+          room : room
+        }
+      });
+    }
+  }
 
   return(    
     <React.Fragment>
@@ -35,14 +67,14 @@ const Group = React.memo(({group, room}) => {
 
         <div className={St.row2}>
           <div className={St.wrap}>            
-            {/* <ListImage fallback={<div>Loading..</div>}></ListImage> */}
+            <ListImage fallback={<div>Loading..</div>} data = {data}></ListImage>
           </div>
         </div>  
 
         <Desc fallback={<div>Loading..</div>} data = {data} ></Desc>
 
         <div className={St.framebtn}>
-          <button onClick={()=>{}} className={St.btn} >PILIH</button>
+          <button onClick={saveChoosen} className={St.btn} >PILIH</button>
         </div>
 
       </Mobile>        

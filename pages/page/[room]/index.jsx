@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Mobile from '../../../layout/mobile';
 
 import St from '../../../styles/page/Room.module.css';
 
-import { del } from '../../../hooks/localStorage';
+import { del, get, set } from '../../../hooks/localStorage';
 import { useRouter } from 'next/router';
 
 import { findPositionCandidate } from '../../../api/index';
@@ -22,6 +22,7 @@ const Room = ({room}) => {
   const router = useRouter();    
   const atBack = () => {
     del("Anggota");
+    del("Choosen");
     router.push("/page/vmail");
   }
   
@@ -78,13 +79,42 @@ const ListRoom = React.memo(({room})=>{
 
   const { data } = useSWR("/api/candidate/getRoom", async ()=>{return await findPositionCandidate(room)});
 
-  const atListClick = (position = new String()) => {
-    router.push({
-      pathname: '/page/[room]/[group]',
-      query:{
-        room : room,
-        group : position
+  useEffect(()=>{    
+    if(data != undefined){
+      const tmp = get("Choosen");            
+      let arr = [];
+      if(tmp === null){        
+        data.forEach( e =>{
+          const obj = {
+            position : e.position,
+            sta : false,
+            choose : null
+          }
+          arr.push(obj);
+        });        
+        set("Choosen", arr);        
       }
+    }
+  });
+
+  const atListClick = (position = new String()) => {
+    const tmp = get("Choosen");       
+    console.log(tmp); 
+    tmp.forEach(e => {      
+      if(e.position === position){
+        if(e.sta === false && e.choose === null){
+          router.push({
+            pathname: '/page/[room]/[group]',
+            query:{
+              room : room,
+              group : position
+            }
+          });
+        }
+        else{
+          alert("Sudah memilih pada bagian position ini!!");
+        }
+      } 
     });
   }
 
@@ -93,7 +123,7 @@ const ListRoom = React.memo(({room})=>{
       <div></div>
     );
   }
-  else{
+  else{    
     return(
       <React.Fragment>      
         {
