@@ -1,19 +1,27 @@
 import React, {useContext} from 'react';
-import useSWR from 'swr';
 import { REDUCER } from '../../global/context/val'
 import St from '../../styles/view/group/Desc.module.css';
 
-import { testingDetailUse } from '../../api/index';
-
 const { STATEREDUCER } = REDUCER;
 
-const Desc = ({fallback = null}) => {
+const Desc = ({fallback = null, data}) => {
 
   const state = useContext(STATEREDUCER);    
 
-  const { data } = useSWR(`/api/testing/detail/${state.groupDesc}`, ()=>testingDetailUse(state.groupDesc));
+  const changeToList = (param = new String()) => {
+    const changeData = param.replace(/\|}|{|}|"/g,''); 
+    console.log(changeData);
+    const spl = changeData.split(',');
+    return spl;
+  }
 
-  if(data == undefined){
+  let itemData = undefined;
+  
+  if(data != undefined){
+    itemData = data[state.groupDesc-1];
+  }
+
+  if(itemData === undefined){
     return(
       <React.Fragment>
         {fallback}
@@ -28,13 +36,19 @@ const Desc = ({fallback = null}) => {
             <div  className={St.headertxt}>
               <span>Visi</span>
             </div>
-            <span className={St.destxt}>{data.data.title}</span>
+            <span className={St.destxt}>{itemData.vision}</span>
           </div>
           <div className={St.misi}>
             <div  className={St.headertxt}>
               <span>Misi</span>
             </div>
-            <span className={St.destxt}>{data.data.body}</span>
+            {
+              changeToList(itemData.mission).map((e, i)=>(
+                <div key={i}>
+                  <span className={St.destxt}>{e}</span>
+                </div>                
+              ))
+            }
           </div>
         </div>
       </React.Fragment>

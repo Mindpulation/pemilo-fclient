@@ -22,3 +22,8 @@ export const get = ( key = new String() ) => {
   return returnSecure;
 
 }
+
+export const del = (key = new String()) => {
+  const keySecure = md5(key);
+  localStorage.removeItem(keySecure);
+}

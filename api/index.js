@@ -14,9 +14,16 @@ export const testingDetailUse = async (param = 1) => {
   return await testing.get('/posts/'+param);
 }
 
-export const findRoom = async (param = new Object) => {
-  const obj = {find : {param}}
-  return await room.post('/find', obj);
+export const checkRoomPass = async (param = new Object()) => {
+  const obj = {find : param}    
+  const res = await room.post('/find', obj);  
+  return(res.res === null) ? false : true;  
+}
+
+export const findRoom = async (param = new String) => {
+  const obj = {find : {codeRoom : param}}    
+  const res = await room.post('/find', obj);  
+  return res.res;
 }
 
 export const findAnggota = async (Room = new String(), Email = new String()) => {
@@ -24,13 +31,21 @@ export const findAnggota = async (Room = new String(), Email = new String()) => 
     find : {
       codeRoom : Room,
       email : Email,
-      status : true
+      status : false
     }
   }
-  return await room.post('/find', obj);
+  const tmp =  await anggota.post('/find', obj);  
+  return tmp;
 }
 
 export const findPositionCandidate = async (Room = new String()) => {
-  const obj = {room__id:Room};
-  return await room.post('/getRoom', obj);
+  const obj = {room__id:Room};  
+  const tmp = await candidate.post('/getRoom', obj);  
+  return tmp;
+}
+
+export const getCandidateWithPositionAndRoom = async (room = new String(), position = new String()) => {  
+  const obj = {room__id : room,position : position}
+  const tmp = await candidate.post("/getCandidate", obj);  
+  return tmp;
 }

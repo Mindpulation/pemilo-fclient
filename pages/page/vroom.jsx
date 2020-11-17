@@ -16,17 +16,20 @@ const Vroom = () => {
   const router = useRouter();
 
   const atClick = useCallback(async (param = new String())=>{                      
-
-    set('Room', txtroom);
-
-    const res = await findRoom(param);  
     
-    if (res === null || res === undefined){ /* Null */ }
-    else{router.push('/page/vmail');}            
+    const res = await findRoom(param);          
 
-  });
+    if (res === null || res === undefined){       
+      console.log("NULL");
+    }
+    else{      
+      if(res.password === undefined || res.password === null){set('PasswordRoom', false);}else{set('PasswordRoom', true);}
+      const tmpObj = {room : res.codeRoom, nama : res.nama};
+      set('Room', JSON.stringify(tmpObj));
+      router.push('/page/vmail');
+    }            
 
-  console.log(`welcome to validate room`)
+  });  
 
     return(
       <React.Fragment>

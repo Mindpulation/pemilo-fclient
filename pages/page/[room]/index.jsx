@@ -5,25 +5,26 @@ import Mobile from '../../../layout/mobile';
 
 import St from '../../../styles/page/Room.module.css';
 
-import { set } from '../../../hooks/localStorage';
-import { useLink } from '../../../hooks/index';
+import { del } from '../../../hooks/localStorage';
 import { useRouter } from 'next/router';
 
 import { findPositionCandidate } from '../../../api/index';
 
 import useSWR from 'swr';
 
-const Room = () => {
+export function getServerSideProps(context){
+  const { room } = context.params
+  return { props: { room } };
+}
 
-  const router = useRouter();
-
+const Room = ({room}) => {
+  
+  const router = useRouter();    
   const atBack = () => {
-    set("Status", false);
+    del("Anggota");
     router.push("/page/vmail");
   }
-
-  const { room } = useLink();
-
+  
   return(
     <React.Fragment>
       
@@ -54,7 +55,7 @@ const Room = () => {
           </div>
 
           <div className={St.col}>
-            <ListRoom></ListRoom>
+            <ListRoom room={room}></ListRoom>
           </div>
 
           <div className={St.row3}>
@@ -71,13 +72,11 @@ const Room = () => {
 
 }
 
-const ListRoom = React.memo(()=>{
+const ListRoom = React.memo(({room})=>{
 
-  const router = useRouter();
+  const router = useRouter();  
 
-  const { room } = useLink();
-
-  const { data } = useSWR("/api/candidate/", ()=>{findPositionCandidate(room)});
+  const { data } = useSWR("/api/candidate/getRoom", async ()=>{return await findPositionCandidate(room)});
 
   const atListClick = (position = new String()) => {
     router.push({
@@ -89,7 +88,7 @@ const ListRoom = React.memo(()=>{
     });
   }
 
-  if(data.data === undefined){
+  if(data === undefined){
     return(
       <div></div>
     );
@@ -98,7 +97,7 @@ const ListRoom = React.memo(()=>{
     return(
       <React.Fragment>      
         {
-          data.data.map((e,i)=>{
+          data.map((e,i)=>{
             return(
               <div className={St.row3} key={i}>
                 <input onClick={()=>{atListClick(e.position)}} type="button" value={e.position} className={St.btn}/>

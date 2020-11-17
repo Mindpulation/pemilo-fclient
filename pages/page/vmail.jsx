@@ -4,45 +4,77 @@ import Mobile from '../../layout/mobile'
 import React, { useEffect, useState } from 'react'
 import ImageBlur from '../../components/image/blur'
 
-import { set, get } from '../../hooks/localStorage';
-import { findAnggota, findRoom } from '../../api/index';
+import { set, get, del } from '../../hooks/localStorage';
+import { findAnggota, findRoom, checkRoomPass } from '../../api/index';
 import { useRouter } from 'next/router';
+
+const VmailNoValid = () => {
+  return(
+    <React.Fragment>
+      <Head>
+        <title>Page Email Validate</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
+      <Mobile>
+        <span>404</span>
+      </Mobile>
+    </React.Fragment>
+  );
+}
 
 const Vmail = () => {  
 
   const router = useRouter();  
 
   const [room, setRoom] = useState("");
+  const [name, setName] = useState("");
+  const [pw, setPw]     = useState(false);
 
   const [mail, setMail] = useState("");
   const [pass, setPass] = useState("");
 
   useEffect(()=>{
-    setRoom(()=>{return get("Room")});
+    const tmpget = get("Room");        
+    if(tmpget === null){
+      setRoom(null);
+      setName(null);
+    }
+    else{
+      const tmp = JSON.parse(tmpget);
+      setRoom(tmp.room);
+      setName(tmp.nama);
+    }
+    setPw(()=>{return get("PasswordRoom")}); //-> isinya true or false
   },[]);
 
   const atClick = async () => {
 
-    const rom = await findRoom({codeRoom:room, password:pass});    
-    const ang = await findAnggota(room, mail);
+    let rom = false;
+    let ang = null;
 
-    if(rom.data.res != null && ang.data.res != null){}
-    else{
-      alert("Password atau Email kamu salah");
+    if(pw === true){
+      rom = await checkRoomPass({codeRoom:room, password:pass});    
+    }    
+
+    ang = await findAnggota(room, mail); 
+    
+    //condition at true
+    if(ang.message === undefined && rom === true)  {      
+      set("Anggota", JSON.stringify(ang));      
+      router.push({
+        pathname: '/page/[room]',
+        query : {room : room}
+      });
     }
 
-    set("Status", true);
+  }    
 
-    router.push({
-      pathname: '/page/[room]',
-      query : {room : room}
-    });
-
+  if(room === undefined || room === null){
+    return VmailNoValid();
   }
-
-  console.log(`welcome to validate email`)
-    
-  return(
+  else{    
+    return(
       <React.Fragment>
         
         <Head>
@@ -61,14 +93,14 @@ const Vmail = () => {
               <p>kamu sudah masuk room</p>
             </div>
             <div className={s.instruction}>
-              <p className={s.medium}>{room}</p>
+              <p className={s.medium}>{name}</p>
               <p>di tahap ke <b> dua </b> kamu harus memasukan <b> email </b> yang kamu daftarkan kepada <b> panitia </b> sebelum <b> room </b> dimulai</p>
             </div>
             <div className={s.column}>
   
               <input onChange={(e)=>{setMail(e.target.value)}} type="email" name="mail" id="Rmail" className={s.input} placeholder="Email address"/>
-
-              <input onChange={(e)=>{setPass(e.target.value)}} type="password" name="pass" id="Rpass" className={s.input} placeholder="Password Room"/>
+              
+              {(pw === true) ? <input onChange={(e)=>{setPass(e.target.value)}} type="password" name="pass" id="Rpass" className={s.input} placeholder="Password Room"/>  : null}
   
               <input onClick={()=>{atClick()}} type="button" value="lanjut" className={s.btn}/>
   
@@ -79,6 +111,10 @@ const Vmail = () => {
   
       </React.Fragment>
     )
+  }
+
+
+    
   }
 
 

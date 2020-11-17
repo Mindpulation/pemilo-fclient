@@ -4,12 +4,19 @@ import Mobile from '../../../layout/mobile.jsx';
 import Desc from '../../../view/group/desc.jsx';
 import St from '../../../styles/page/Group.module.css';
 import ListImage from  '../../../view/group/listImage.jsx';
+import useSWR from 'swr';
+import { getCandidateWithPositionAndRoom } from '../../../api/index.js';
 
-import { useLink } from '../../../hooks/index.js';
+export function getServerSideProps(context){
+  const { group, room } = context.params
+  return {
+    props:{group, room}
+  }
+}
 
-const Group = React.memo(() => {  
+const Group = React.memo(({group, room}) => {   
 
-  const { group } = useLink();
+  const { data } = useSWR(`/api/candidate/getCandidate`, ()=>{return getCandidateWithPositionAndRoom(room, group)} );  
 
   return(    
     <React.Fragment>
@@ -28,11 +35,11 @@ const Group = React.memo(() => {
 
         <div className={St.row2}>
           <div className={St.wrap}>            
-            <ListImage fallback={<div>Loading..</div>}></ListImage>                      
+            {/* <ListImage fallback={<div>Loading..</div>}></ListImage> */}
           </div>
         </div>  
 
-        <Desc fallback={<div>Loading..</div>} ></Desc>
+        <Desc fallback={<div>Loading..</div>} data = {data} ></Desc>
 
         <div className={St.framebtn}>
           <button onClick={()=>{}} className={St.btn} >PILIH</button>
