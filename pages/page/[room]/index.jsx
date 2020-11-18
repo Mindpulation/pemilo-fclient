@@ -25,6 +25,24 @@ const Room = ({room}) => {
     del("Choosen");
     router.push("/page/vmail");
   }
+
+  const atNext = () => {
+    const tmp = get("Choosen");
+    let count = 0;
+    tmp.map(e=>{
+      if(e.sta === true){
+        count++;
+      }
+    });
+    if(count === tmp.length){
+      router.push({
+        pathname:'/page/[room]/confirm',
+        query:{
+          room : room
+        }
+      });
+    }
+  }
   
   return(
     <React.Fragment>
@@ -60,7 +78,7 @@ const Room = ({room}) => {
           </div>
 
           <div className={St.row3}>
-            <button onClick={()=>{}} className={St.btn}>Lanjut</button>
+            <button onClick={atNext} className={St.btn}>Lanjut</button>
             <div className={St.framelink}>
               <a onClick={atBack}>Kembali ke tahap ke-2</a>
             </div>
@@ -98,8 +116,7 @@ const ListRoom = React.memo(({room})=>{
   });
 
   const atListClick = (position = new String()) => {
-    const tmp = get("Choosen");       
-    console.log(tmp); 
+    const tmp = get("Choosen");           
     tmp.forEach(e => {      
       if(e.position === position){
         if(e.sta === false && e.choose === null){

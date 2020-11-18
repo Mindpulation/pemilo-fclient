@@ -1,17 +1,44 @@
-import React from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Mobile from '../../../../layout/mobile'
 import St from '../../../../styles/page/Confirm.module.css';
 
 import { useRouter } from 'next/router'
-import { useLink } from '../../../../hooks/index';
+import { get } from '../../../../hooks/localStorage';
 
-const Confirm = () => {
+export function getServerSideProps(context){
+  const {room} = context.params;
+  return {
+    props : {
+      room
+    }
+  }
+}
 
-  const router = useRouter();
+const Confirm = ({room}) => {
 
-  const { room } = useLink();
+  const router = useRouter();  
+
+  const [listData, setListData] = useState([]);
+
+  console.log("Render");
+
+  useEffect(()=>{    
+    setListData(get("Choosen"));        
+  },[]);  
+
+  const navigatePreview = (index = 0 )=>{
+        
+    router.push({
+      pathname: '/page/[room]/confirm/[id]',
+      query : {
+        room : room,
+        id : index
+      }
+    });
+
+  };
 
   return(
     <React.Fragment>
@@ -35,43 +62,23 @@ const Confirm = () => {
           </div>
 
           <div className={St.row2}>
-
-            <div className={St.profile}>
-              <div className={St.profileHead}>
-                <span className={St.blue}>Ketua</span>
-              </div>
-              <div className={St.frameimg}>
-                <Image className={St.content} src={"/pemilo.svg"} alt={"Logo Pemilo"} width={75} height={75}></Image>
-              </div>
-              <div className={St.txt}>
-                <span>Amardito Khairi</span>
-              </div>
-            </div>
-            
-            <div className={St.profile}>
-              <div className={St.profileHead}>
-                <span className={St.blue}>Wakil Ketua</span>
-              </div>
-              <div className={St.frameimg}>
-                <Image className={St.content} src={"/pemilo.svg"} alt={"Logo Pemilo"} width={75} height={75}></Image>
-              </div>
-              <div className={St.txt}>
-                <span>Amardito Khairi Test Nama Panjang</span>
-              </div>
-            </div>
-            
-            <div className={St.profile}>
-              <div className={St.profileHead}>
-                <span className={St.blue}>Anonym</span>
-              </div>
-              <div className={St.frameimg}>
-                <Image className={St.content} src={"/pemilo.svg"} alt={"Logo Pemilo"} width={75} height={75}></Image>
-              </div>
-              <div className={St.txt}>
-                <span>Amardito Khairi</span>
-              </div>
-            </div>
-
+            {
+              listData.map((e,i)=>{
+                return(
+                  <div className={St.profile} key={i}>
+                    <div className={St.profileHead}>
+                      <span className={St.blue}>{e.position}</span>
+                    </div>
+                    <div className={St.frameimg}>
+                      <Image onClick={()=>{navigatePreview(i)}} className={St.content} src={(e.choose.photo == "")?"/pemilo.svg":e.choose.photo} alt={"Logo Pemilo"} width={75} height={75}></Image>
+                    </div>
+                    <div className={St.txt} onClick={()=>{navigatePreview(i)}}>                    
+                      <span>{e.choose.name}</span>
+                    </div>
+                  </div>
+                );
+              })
+            }                                
          </div>
 
           <div className={St.row3}>
