@@ -1,11 +1,18 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Mobile from '../../../../layout/mobile'
+import ModalValid from '../../../../components/modal/valid'
 import St from '../../../../styles/page/Confirm.module.css';
 
 import { useRouter } from 'next/router'
 import { get } from '../../../../hooks/localStorage';
+import { MODALCONTEXT1 } from '../../../../global/context/val';
+import { actionModal } from '../../../../global/actions';
+
+const OBJ_MODAL1 = actionModal("Modal1");
+
+const { DISPATCHMODALCONTEXT1 } = MODALCONTEXT1;
 
 export function getServerSideProps(context){
   const {room} = context.params;
@@ -18,11 +25,15 @@ export function getServerSideProps(context){
 
 const Confirm = ({room}) => {
 
+  const modalDispatch1 = useContext(DISPATCHMODALCONTEXT1);
+
+  const validModalShow = () => {
+    modalDispatch1( {tipe : OBJ_MODAL1.SHOW_MODAL } )
+  }
+
   const router = useRouter();  
 
-  const [listData, setListData] = useState([]);
-
-  console.log("Render");
+  const [listData, setListData] = useState([]);  
 
   useEffect(()=>{    
     setListData(get("Choosen"));        
@@ -42,7 +53,7 @@ const Confirm = ({room}) => {
 
   return(
     <React.Fragment>
-
+      <ModalValid></ModalValid>
       <Mobile>
         <div className={St.container}>  
           <div className={St.row1}>
@@ -82,14 +93,13 @@ const Confirm = ({room}) => {
          </div>
 
           <div className={St.row3}>
-            <button onClick={()=>{}} className={St.btn}>Selesai</button>
+            <button onClick={ validModalShow } className={St.btn}>Selesai</button>
             <div className={St.framelink}>
               <Link href={{ pathname : '/page/[room]', query : { room : room } }}>Kembali ke tahap ke-3</Link>
             </div>
           </div>
         </div>
       </Mobile>
-
     </React.Fragment>
   );
 }

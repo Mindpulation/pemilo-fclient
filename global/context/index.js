@@ -7,7 +7,7 @@ const { STATEREDUCER, DISPATCHREDUCER } = REDUCER;
 
 const GLOBALCONTEXT = ({children}) => {
 
-  const [stateModal1, disModal1]  = useReducer(reduceModal1, false);
+  const [stateModal1, disModal1]  = useReducer(reduceModal1, true);
   const [state, dispatch]         = useReducer(reducer, { groupDesc : 1 });
 
   const wrapStateModal1 = useMemo(
