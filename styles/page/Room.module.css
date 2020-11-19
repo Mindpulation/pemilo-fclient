@@ -67,6 +67,10 @@
   border: 2px solid #00000010;
 }
 
+.row3 .btn:hover{
+  background-color: #85baeb;
+}
+
 .row3 .framelink{
   padding-top: 15px;    
   font-size: larger;

@@ -1,0 +1,1 @@
+File enc.js harusnya ada di sini.

@@ -1,12 +1,36 @@
 import Head from 'next/head'
 import s from '../../styles/page/Vroom.module.css'
 import Mobile from '../../layout/mobile'
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import ImageBlur from '../../components/image/blur'
-import Link from 'next/link'
+
+import { useRouter } from 'next/router';
+import { findRoom } from '../../api/index';
+
+import { set } from '../../hooks/localStorage';
 
 const Vroom = () => {
-  console.log(`welcome to validate room`)
+  
+  const [txtroom, settxtroom] = useState("");  
+
+  const router = useRouter();
+
+  const atClick = useCallback(async (param = new String())=>{                      
+    
+    const res = await findRoom(param);          
+
+    if (res === null || res === undefined){       
+      console.log("NULL");
+    }
+    else{      
+      if(res.password === undefined || res.password === null){set('PasswordRoom', false);}else{set('PasswordRoom', true);}
+      const tmpObj = {room : res.codeRoom, nama : res.nama};
+      set('Room', JSON.stringify(tmpObj));
+      router.push('/page/vmail');
+    }            
+
+  });  
+
     return(
       <React.Fragment>
         
@@ -31,11 +55,9 @@ const Vroom = () => {
             </div>
             <div className={s.column}>
   
-              <input type="text" name="code" id="Rcode" className={s.input} placeholder="Room Code"/>
-  
-              <input type="text" name="password" id="Rpassword" className={s.input} placeholder="Room Password"/>
-  
-              <Link href={"/page/vmail"}><input type="button" value="masuk" className={s.btn}/></Link>
+              <input onChange={(e)=>{settxtroom(e.target.value)}} type="text" name="code" id="Rcode" className={s.input} placeholder="Room Code"/>              
+                
+              <input onClick={()=>{atClick(txtroom)}} type="button" value="masuk" className={s.btn}/>
               
               <div className={s.row}>
                 <span className={s.link}> Ingin menjadi admin </span>

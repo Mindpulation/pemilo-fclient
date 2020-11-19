@@ -55,6 +55,10 @@
   max-width: 100%;
 }
 
+.row3 .visi{
+  padding-bottom: 15px;
+}
+
 .row4 .btn{
   padding: 10px 40px;  
   background-color: #6EADE8;

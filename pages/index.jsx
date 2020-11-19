@@ -8,15 +8,15 @@ const Main = () => {
   }
 
   return(
-    <>      
+    <>
       <Head>
         <title>Pemilo</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>      
+      </Head>
 
       <div>
-        <button onClick={atClick}>Try testing function wrap</button>
+        <button onClick={atClick}>Try testing function sss</button>
       </div>
 
     </>

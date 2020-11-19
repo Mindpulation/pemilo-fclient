@@ -1,17 +1,49 @@
-import React from 'react';
-import Link from 'next/link';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Mobile from '../../../layout/mobile';
 
 import St from '../../../styles/page/Room.module.css';
 
-import { useLink } from '../../../hooks/index';
+import { del, get, set } from '../../../hooks/localStorage';
+import { useRouter } from 'next/router';
 
-const Room = () => {
+import { findPositionCandidate } from '../../../api/index';
 
-  const { room } = useLink();
+import useSWR from 'swr';
 
+export function getServerSideProps(context){
+  const { room } = context.params
+  return { props: { room } };
+}
+
+const Room = ({room}) => {
+  
+  const router = useRouter();    
+  const atBack = () => {
+    del("Anggota");
+    del("Choosen");
+    router.push("/page/vmail");
+  }
+
+  const atNext = () => {
+    const tmp = get("Choosen");
+    let count = 0;
+    tmp.map(e=>{
+      if(e.sta === true){
+        count++;
+      }
+    });
+    if(count === tmp.length){
+      router.push({
+        pathname:'/page/[room]/confirm',
+        query:{
+          room : room
+        }
+      });
+    }
+  }
+  
   return(
     <React.Fragment>
       
@@ -42,21 +74,13 @@ const Room = () => {
           </div>
 
           <div className={St.col}>
-            <div className={St.row3}>
-              <Link href={"/page/uwu/position1"}><input type="button" value="Position 1" className={St.btn}/></Link>
-            </div>
-            <div className={St.row3}>
-              <Link href={"/page/uwu/position2"}><input type="button" value="Position 2" className={St.btn}/></Link>
-            </div>
-            <div className={St.row3}>
-              <Link href={"/page/uwu//position3"}><input type="button" value="Position 3" className={St.btn}/></Link>
-            </div>
+            <ListRoom room={room}></ListRoom>
           </div>
 
           <div className={St.row3}>
-            <button onClick={()=>{}} className={St.btn}>Lanjut</button>
+            <button onClick={atNext} className={St.btn}>Lanjut</button>
             <div className={St.framelink}>
-              <Link href={"/page/vmail"}>Kembali ke tahap ke-2</Link>
+              <a onClick={atBack}>Kembali ke tahap ke-2</a>
             </div>
           </div>
         </div>
@@ -66,5 +90,72 @@ const Room = () => {
   );
 
 }
+
+const ListRoom = React.memo(({room})=>{
+
+  const router = useRouter();  
+
+  const { data } = useSWR("/api/candidate/getRoom", async ()=>{return await findPositionCandidate(room)});
+
+  useEffect(()=>{    
+    if(data != undefined){
+      const tmp = get("Choosen");            
+      let arr = [];
+      if(tmp === null){        
+        data.forEach( e =>{
+          const obj = {
+            position : e.position,
+            sta : false,
+            choose : null
+          }
+          arr.push(obj);
+        });        
+        set("Choosen", arr);        
+      }
+    }
+  });
+
+  const atListClick = (position = new String()) => {
+    const tmp = get("Choosen");           
+    tmp.forEach(e => {      
+      if(e.position === position){
+        if(e.sta === false && e.choose === null){
+          router.push({
+            pathname: '/page/[room]/[group]',
+            query:{
+              room : room,
+              group : position
+            }
+          });
+        }
+        else{
+          alert("Sudah memilih pada bagian position ini!!");
+        }
+      } 
+    });
+  }
+
+  if(data === undefined){
+    return(
+      <div></div>
+    );
+  }
+  else{    
+    return(
+      <React.Fragment>      
+        {
+          data.map((e,i)=>{
+            return(
+              <div className={St.row3} key={i}>
+                <input onClick={()=>{atListClick(e.position)}} type="button" value={e.position} className={St.btn}/>
+              </div>
+            )
+          })
+        }
+      </React.Fragment>
+    );
+  }
+
+});
 
 export default Room;

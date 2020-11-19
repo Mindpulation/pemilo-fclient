@@ -4,5 +4,5 @@ export const OBJMODAL = {
 };
 
 export const OBJACTIONS = {
-  CHANGE_DATA_GROUP_DESC : "changeDataGroupDesc"
+  CHANGE_DATA_GROUP_DESC : "changeDataGroupDesc",
 }
