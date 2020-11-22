@@ -38,6 +38,7 @@ const Valid = React.memo(() => {
   // }
 
   const atSure = () => {          
+    alert("Boom");
     const ch = get("Choosen");
     const anggota = get("Anggota");          
     //eng.emit("sendVote", null);
