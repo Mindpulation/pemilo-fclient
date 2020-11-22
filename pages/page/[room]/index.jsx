@@ -17,9 +17,18 @@ export function getServerSideProps(context){
   return { props: { room } };
 }
 
-const Room = ({room}) => {
-  
+const Room = ({room}) => {  
+    
   const router = useRouter();    
+
+  useEffect(()=>{
+    const tmpget = get("Room");
+    if(tmpget === null){
+      router.push("/page/vroom");      
+    }
+  },[]);
+
+
   const atBack = () => {
     del("Anggota");
     del("Choosen");

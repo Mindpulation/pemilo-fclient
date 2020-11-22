@@ -37,11 +37,10 @@ const Vmail = () => {
   useEffect(()=>{
     const tmpget = get("Room");        
     if(tmpget === null){
-      setRoom(null);
-      setName(null);
+      router.push("/page/vroom");
     }
     else{
-      const tmp = JSON.parse(tmpget);
+      const tmp = tmpget;
       setRoom(tmp.room);
       setName(tmp.nama);
     }
@@ -66,6 +65,9 @@ const Vmail = () => {
         pathname: '/page/[room]',
         query : {room : room}
       });
+    }
+    else{
+      alert("Akun telah digunakan");
     }
 
   }    

@@ -20,7 +20,7 @@ const Vroom = () => {
     const res = await findRoom(param);          
 
     if (res === null || res === undefined){       
-      console.log("NULL");
+      alert("Room tidak tersedia");
     }
     else{      
       if(res.password === undefined || res.password === null){set('PasswordRoom', false);}else{set('PasswordRoom', true);}
