@@ -41,8 +41,7 @@ const Valid = React.memo(() => {
   const atSure = async () => {          
     alert("Boom");
     const ch = get("Choosen");
-    const anggota = get("Anggota");          
-    console.log(anggota);
+    const anggota = get("Anggota");              
     await changeStatusAnggota({codeRoom:anggota.codeRoom, email:anggota.email}, {status:true});
     //eng.emit("sendVote", null);
     ch.forEach(e => { eng.emit("sendVote", {emailAnggota : anggota.email, codeRoom : anggota.codeRoom, idCandidate : e.choose.id}); });

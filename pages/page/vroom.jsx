@@ -25,7 +25,7 @@ const Vroom = () => {
     else{      
       if(res.password === undefined || res.password === null){set('PasswordRoom', false);}else{set('PasswordRoom', true);}
       const tmpObj = {room : res.codeRoom, nama : res.nama};
-      set('Room', JSON.stringify(tmpObj));
+      set('Room', tmpObj);
       router.push('/page/vmail');
     }            
 
