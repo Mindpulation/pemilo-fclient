@@ -16,8 +16,8 @@ export const testingDetailUse = async (param = 1) => {
 
 export const changeStatusAnggota = async (obj1 = new Object(), obj2 = new Object()) => {
   const param = {
-    find : {obj1},
-    update : {obj2}
+    find : obj1,
+    update : obj2
   }
   const res = await anggota.put('/update', param);  
   return res;
