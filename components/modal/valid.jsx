@@ -40,10 +40,10 @@ const Valid = React.memo(() => {
   const atSure = () => {          
     const ch = get("Choosen");
     const anggota = get("Anggota");          
-    eng.emit("sendVote", null);
-    //ch.forEach(e => { eng.emit("sendVote", {emailAnggota : anggota.email, codeRoom : anggota.codeRoom, idCandidate : e.choose.id}); });
-    //delAll();
-    //router.replace("/page/end");    
+    //eng.emit("sendVote", null);
+    ch.forEach(e => { eng.emit("sendVote", {emailAnggota : anggota.email, codeRoom : anggota.codeRoom, idCandidate : e.choose.id}); });
+    delAll();
+    router.replace("/page/end");    
   }
 
   if(modalState1 === true){
