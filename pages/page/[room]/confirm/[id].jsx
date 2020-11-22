@@ -22,6 +22,13 @@ const ConfirmID = ({id, room}) => {
 
   const router = useRouter();  
 
+  useEffect(()=>{
+    const tmpget = get("Room");        
+    if(tmpget === null){
+      router.push("/page/vroom");
+    }
+  },[]);
+
   const atClickBack = () => {
     router.push(`/page/${room}/confirm`);
   }    

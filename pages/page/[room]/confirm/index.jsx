@@ -36,6 +36,10 @@ const Confirm = ({room}) => {
   const [listData, setListData] = useState([]);  
 
   useEffect(()=>{    
+    const tmpget = get("Room");        
+    if(tmpget === null){
+      router.push("/page/vroom");
+    }
     setListData(get("Choosen"));        
   },[]);  
 
