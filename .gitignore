@@ -34,4 +34,4 @@ yarn-error.log*
 .vercel
 
 #secure part
-controller/enc.js
+
