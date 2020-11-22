@@ -59,8 +59,8 @@ const Vmail = () => {
 
     ang = await findAnggota(room, mail); 
     
-    //condition at true
-    if(ang.message === undefined && rom === true)  {      
+    //condition at true    
+    if(ang.message === undefined && rom === true || ang.message === undefined)  {      
       set("Anggota", ang);      
       router.push({
         pathname: '/page/[room]',

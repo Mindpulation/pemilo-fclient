@@ -14,8 +14,10 @@ import { delAll, get } from '../../hooks/localStorage';
 const OBJ_MODAL1 = actionModal("Modal1");
 
 const soc = new Socket();
-//const eng = soc.con("http://34.101.95.115/v1/vote");
-const eng = soc.con("http://127.0.0.1:8675/");
+const eng = soc.con("http://34.101.95.115:8675");
+//const eng = soc.con("http://34.101.95.115:9999");
+//const eng = soc.con("http://127.0.0.1:9999");
+//const eng = soc.con("http://20bf55cfbc86.ngrok.io");
 
 const { STATEMODALCONTEXT1, DISPATCHMODALCONTEXT1 } = MODALCONTEXT1;
 
@@ -31,12 +33,17 @@ const Valid = React.memo(() => {
     modalDispatch1( {tipe : OBJ_MODAL1.HIDE_MODAL } )
   }
 
+  // const atClick = () => {
+  //   eng.emit("test");
+  // }
+
   const atSure = () => {          
     const ch = get("Choosen");
-    const anggota = get("Anggota");      
-    ch.forEach(e => { eng.emit("sendVote", {emailAnggota : anggota.email, codeRoom : anggota.codeRoom, idCandidate : e.choose.id}); });
-    delAll();
-    router.replace("/page/end");    
+    const anggota = get("Anggota");          
+    eng.emit("sendVote", null);
+    //ch.forEach(e => { eng.emit("sendVote", {emailAnggota : anggota.email, codeRoom : anggota.codeRoom, idCandidate : e.choose.id}); });
+    //delAll();
+    //router.replace("/page/end");    
   }
 
   if(modalState1 === true){
