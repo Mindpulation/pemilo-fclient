@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 import Socket from  '../../lib/socket';
 
 import { delAll, get } from '../../hooks/localStorage';
+import { changeStatusAnggota } from '../../api';
 
 const OBJ_MODAL1 = actionModal("Modal1");
 
@@ -37,10 +38,12 @@ const Valid = React.memo(() => {
   //   eng.emit("test");
   // }
 
-  const atSure = () => {          
+  const atSure = async () => {          
     alert("Boom");
     const ch = get("Choosen");
     const anggota = get("Anggota");          
+    console.log(anggota);
+    await changeStatusAnggota({codeRoom:anggota.codeRoom, email:anggota.email}, {status:true});
     //eng.emit("sendVote", null);
     ch.forEach(e => { eng.emit("sendVote", {emailAnggota : anggota.email, codeRoom : anggota.codeRoom, idCandidate : e.choose.id}); });
     delAll();

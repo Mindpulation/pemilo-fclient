@@ -14,6 +14,15 @@ export const testingDetailUse = async (param = 1) => {
   return await testing.get('/posts/'+param);
 }
 
+export const changeStatusAnggota = async (obj1 = new Object(), obj2 = new Object()) => {
+  const param = {
+    find : {obj1},
+    update : {obj2}
+  }
+  const res = await anggota.put('/update', param);  
+  return res;
+}
+
 export const checkRoomPass = async (param = new Object()) => {
   const obj = {find : param}    
   const res = await room.post('/find', obj);  
