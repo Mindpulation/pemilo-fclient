@@ -32,6 +32,10 @@ const Group = ({group, room}) => {
   const disGroup = useContext(DISPATCHREDUCER);  
 
   useEffect(()=>{    
+    const tmpget = get("Room");        
+    if(tmpget === null){
+      router.push("/page/vroom");
+    }
     disGroup({tipe : OBJACTIONS.CHANGE_DATA_GROUP_DESC, payload:1});
   },[]);
   

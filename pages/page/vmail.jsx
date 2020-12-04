@@ -8,26 +8,11 @@ import { set, get, del } from '../../hooks/localStorage';
 import { findAnggota, findRoom, checkRoomPass } from '../../api/index';
 import { useRouter } from 'next/router';
 
-const VmailNoValid = () => {
-  return(
-    <React.Fragment>
-      <Head>
-        <title>Page Email Validate</title>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
-      <Mobile>
-        <span>404</span>
-      </Mobile>
-    </React.Fragment>
-  );
-}
-
 const Vmail = () => {  
 
   const router = useRouter();  
 
-  const [room, setRoom] = useState("");
+  const [room, setRoom] = useState(null);
   const [name, setName] = useState("");
   const [pw, setPw]     = useState(false);
 
@@ -36,16 +21,17 @@ const Vmail = () => {
 
   useEffect(()=>{
     const tmpget = get("Room");        
-    if(tmpget === null){
-      setRoom(null);
-      setName(null);
+    if(tmpget === null){      
+      router.push("/page/vroom");
     }
     else{
-      const tmp = JSON.parse(tmpget);
+      const tmp = tmpget;      
       setRoom(tmp.room);
       setName(tmp.nama);
     }
     setPw(()=>{return get("PasswordRoom")}); //-> isinya true or false
+    console.log(name);
+    console.log(room);
   },[]);
 
   const atClick = async () => {
@@ -59,19 +45,22 @@ const Vmail = () => {
 
     ang = await findAnggota(room, mail); 
     
-    //condition at true
-    if(ang.message === undefined && rom === true)  {      
+    //condition at true    
+    if(ang.message === undefined && rom === true || ang.message === undefined)  {      
       set("Anggota", ang);      
       router.push({
         pathname: '/page/[room]',
         query : {room : room}
       });
     }
+    else{
+      alert("Akun telah digunakan");
+    }
 
   }    
 
   if(room === undefined || room === null){
-    return VmailNoValid();
+    return null
   }
   else{    
     return(
