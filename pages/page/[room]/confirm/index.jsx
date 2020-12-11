@@ -40,6 +40,7 @@ const Confirm = ({room}) => {
     if(tmpget === null){
       router.push("/page/vroom");
     }
+    //console.log(get("Choosen"));
     setListData(get("Choosen"));        
   },[]);  
 
@@ -79,19 +80,24 @@ const Confirm = ({room}) => {
           <div className={St.row2}>
             {
               listData.map((e,i)=>{
-                return(
-                  <div className={St.profile} key={i}>
-                    <div className={St.profileHead}>
-                      <span className={St.blue}>{e.position}</span>
+                if(e.sta === true){
+                  return(
+                    <div className={St.profile} key={i}>
+                      <div className={St.profileHead}>
+                        <span className={St.blue}>{e.position}</span>
+                      </div>
+                      <div className={St.frameimg}>
+                        <Image onClick={()=>{navigatePreview(i)}} className={St.content} src={(e.choose.photo == "")?"/pemilo.svg":e.choose.photo} alt={"Logo Pemilo"} width={75} height={75}></Image>
+                      </div>
+                      <div className={St.txt} onClick={()=>{navigatePreview(i)}}>                    
+                        <span>{e.choose.name}</span>
+                      </div>
                     </div>
-                    <div className={St.frameimg}>
-                      <Image onClick={()=>{navigatePreview(i)}} className={St.content} src={(e.choose.photo == "")?"/pemilo.svg":e.choose.photo} alt={"Logo Pemilo"} width={75} height={75}></Image>
-                    </div>
-                    <div className={St.txt} onClick={()=>{navigatePreview(i)}}>                    
-                      <span>{e.choose.name}</span>
-                    </div>
-                  </div>
-                );
+                  );
+                }
+                else{
+                  return null;
+                }
               })
             }                                
          </div>

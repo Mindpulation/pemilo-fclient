@@ -26,13 +26,14 @@ const Room = ({room}) => {
     if(tmpget === null){
       router.push("/page/vroom");      
     }
+    //console.log(get("Choosen"));
   },[]);
 
 
   const atBack = () => {
-    del("Anggota");
+    //del("Anggota");  
     del("Choosen");
-    router.push("/page/vmail");
+    router.reload();
   }
 
   const atNext = () => {
@@ -43,7 +44,7 @@ const Room = ({room}) => {
         count++;
       }
     });
-    if(count === tmp.length){
+    if(count > 0){
       router.push({
         pathname:'/page/[room]/confirm',
         query:{
@@ -125,23 +126,34 @@ const ListRoom = React.memo(({room})=>{
   });
 
   const atListClick = (position = new String()) => {
-    // const tmp = get("Choosen");           
-    // tmp.forEach(e => {      
-    //   if(e.position === position){
-    //     if(e.sta === false && e.choose === null){
-    //       router.push({
-    //         pathname: '/page/[room]/[group]',
-    //         query:{
-    //           room : room,
-    //           group : position
-    //         }
-    //       });
-    //     }
-    //     else{
-    //       alert("Sudah memilih pada bagian position ini!!");
-    //     }
-    //   } 
-    // });
+    const tmp = get("Choosen");                   
+    let count = 0;
+    tmp.map(e=>{
+      if(e.sta === true){
+        count++;
+      }
+    });    
+    if(count > 0){
+      alert("Kamu hanya bisa memilih satu dari 2 posisi tersebut");
+    }
+    else if(count == 0){
+      tmp.forEach(e => {                  
+        if(e.sta === false && e.choose === null){
+          router.push({
+            pathname: '/page/[room]/[group]',
+            query:{
+              room : room,
+              group : position
+            }
+          });
+        }
+        else{
+          alert("Sudah memilih pada bagian position ini!!");        
+        }
+      });
+    }
+    // if(e.position === position){
+    // }     
     console.log(position);
     console.log(get("Choosen"));
   }
