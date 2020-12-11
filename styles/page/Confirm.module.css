@@ -49,6 +49,8 @@
   float: left;
 }
 
+.profile > .frameimg img, .profile > .txt span{ cursor: pointer;}
+
 .row3{
   margin-bottom: 10px;
 }

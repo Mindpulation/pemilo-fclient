@@ -51,7 +51,7 @@ const Vroom = () => {
             </div>
             <div className={s.instruction}>
               <p>Ini adalah tahap <b> pertama </b> kamu, untuk menjadi pemilih</p>
-              <p>sepertinya kamu butuh <b> Room Code, </b> kamu bisa meminta <b> Room Code </b> kepada panitia</p>
+              <p>Untuk melanjutkan pemilihan dibutuhkan <b> Room Code, </b> dapatkan <b>Codenya</b> di email kamu</p>
             </div>
             <div className={s.column}>
   
@@ -59,9 +59,9 @@ const Vroom = () => {
                 
               <input onClick={()=>{atClick(txtroom)}} type="button" value="masuk" className={s.btn}/>
               
-              <div className={s.row}>
+              {/* <div className={s.row}>
                 <span className={s.link}> Ingin menjadi admin </span>
-              </div>
+              </div> */}
   
             </div>
           </div>
