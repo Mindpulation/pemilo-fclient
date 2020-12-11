@@ -78,7 +78,7 @@ const Room = ({room}) => {
             </div>
 
             <div className={St.txt}>
-              <span>Dari <b>posisi</b> ini mana yang ingin kamu lihat terlebih dahulu</span>
+              <span>Dari <b>posisi</b> ini mana yang ingin kamu pilih</span>
             </div>
           </div>
 
@@ -89,7 +89,7 @@ const Room = ({room}) => {
           <div className={St.row3}>
             <button onClick={atNext} className={St.btn}>Lanjut</button>
             <div className={St.framelink}>
-              <a onClick={atBack}>Kembali ke tahap ke-2</a>
+              <a onClick={atBack}>Pilih Ulang</a>
             </div>
           </div>
         </div>

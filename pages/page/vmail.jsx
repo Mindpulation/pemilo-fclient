@@ -83,7 +83,7 @@ const Vmail = () => {
             </div>
             <div className={s.instruction}>
               <p className={s.medium}>{name}</p>
-              <p>di tahap ke <b> dua </b> kamu harus memasukan <b> email </b> yang kamu daftarkan kepada <b> panitia </b> sebelum <b> room </b> dimulai</p>
+              <p>di tahap ke <b> dua </b> masukan <b> kode tiket </b> dan <b> password room </b> yang ada di <b> email </b> kamu </p>
             </div>
             <div className={s.column}>
   
