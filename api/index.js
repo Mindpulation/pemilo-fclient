@@ -2,9 +2,9 @@ import wrap from './wrap';
 
 const testing = new wrap("https://jsonplaceholder.typicode.com");
 
-const room = new wrap("http://34.101.140.233/v1/room");
-const anggota = new wrap("http://34.101.140.233/v1/anggota");
-const candidate = new wrap("http://34.101.140.233/v1/candidate");
+const room = new wrap("http://pemilo.id/v1/room");
+const anggota = new wrap("http://pemilo.id/v1/anggota");
+const candidate = new wrap("http://pemilo.id/v1/candidate");
 
 export const testingUse = async () => {
   return await testing.get('/photos');  

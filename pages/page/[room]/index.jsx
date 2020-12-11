@@ -125,23 +125,25 @@ const ListRoom = React.memo(({room})=>{
   });
 
   const atListClick = (position = new String()) => {
-    const tmp = get("Choosen");           
-    tmp.forEach(e => {      
-      if(e.position === position){
-        if(e.sta === false && e.choose === null){
-          router.push({
-            pathname: '/page/[room]/[group]',
-            query:{
-              room : room,
-              group : position
-            }
-          });
-        }
-        else{
-          alert("Sudah memilih pada bagian position ini!!");
-        }
-      } 
-    });
+    // const tmp = get("Choosen");           
+    // tmp.forEach(e => {      
+    //   if(e.position === position){
+    //     if(e.sta === false && e.choose === null){
+    //       router.push({
+    //         pathname: '/page/[room]/[group]',
+    //         query:{
+    //           room : room,
+    //           group : position
+    //         }
+    //       });
+    //     }
+    //     else{
+    //       alert("Sudah memilih pada bagian position ini!!");
+    //     }
+    //   } 
+    // });
+    console.log(position);
+    console.log(get("Choosen"));
   }
 
   if(data === undefined){
