@@ -87,7 +87,7 @@ const Vmail = () => {
             </div>
             <div className={s.column}>
   
-              <input onChange={(e)=>{setMail(e.target.value)}} type="email" name="mail" id="Rmail" className={s.input} placeholder="Email address"/>
+              <input onChange={(e)=>{setMail(e.target.value)}} type="text" name="code" id="Cticket" className={s.input} placeholder="Ticket Code"/>
               
               {(pw === true) ? <input onChange={(e)=>{setPass(e.target.value)}} type="password" name="pass" id="Rpass" className={s.input} placeholder="Password Room"/>  : null}
   
