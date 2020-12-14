@@ -26,7 +26,7 @@ const Room = ({room}) => {
     if(tmpget === null){
       router.push("/page/vroom");      
     }
-    //console.log(get("Choosen"));
+    console.log(get("Choosen"));
   },[]);
 
 
