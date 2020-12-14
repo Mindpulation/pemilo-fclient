@@ -41,12 +41,14 @@ const Valid = React.memo(() => {
   const atSure = async () => {          
     alert("Boom");
     const ch = get("Choosen");
-    const anggota = get("Anggota");              
+    const anggota = get("Anggota");    
+    console.log(ch);          
+    console.log(anggota);
     await changeStatusAnggota({codeRoom:anggota.codeRoom, email:anggota.email}, {status:true});
     //eng.emit("sendVote", null);
-    ch.forEach(e => { eng.emit("sendVote", {codeTicket : anggota.codeTicket, codeRoom : anggota.codeRoom, idCandidate : e.choose.id}); });
+    ch.forEach(e => { (e.choose != null) ? eng.emit("sendVote", {codeTicket : anggota.codeTicket, codeRoom : anggota.codeRoom, idCandidate : e.choose.id}) : null });
     delAll();
-    router.replace("/page/end");    
+    router.push("/page/end");    
   }
 
   if(modalState1 === true){
