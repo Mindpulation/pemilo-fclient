@@ -54,7 +54,7 @@ const Vmail = () => {
       });
     }
     else{
-      alert("Akun telah digunakan");
+      alert("Code Ticket atau Password Room salah");
     }
 
   }    
