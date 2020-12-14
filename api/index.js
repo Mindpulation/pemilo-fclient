@@ -39,7 +39,7 @@ export const findAnggota = async (Room = new String(), Email = new String()) => 
   const obj = {
     find : {
       codeRoom : Room,
-      email : Email,
+      codeTicket : Email,
       status : false
     }
   }

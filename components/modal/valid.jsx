@@ -44,7 +44,7 @@ const Valid = React.memo(() => {
     const anggota = get("Anggota");              
     await changeStatusAnggota({codeRoom:anggota.codeRoom, email:anggota.email}, {status:true});
     //eng.emit("sendVote", null);
-    ch.forEach(e => { eng.emit("sendVote", {emailAnggota : anggota.email, codeRoom : anggota.codeRoom, idCandidate : e.choose.id}); });
+    ch.forEach(e => { eng.emit("sendVote", {codeTicket : anggota.codeTicket, codeRoom : anggota.codeRoom, idCandidate : e.choose.id}); });
     delAll();
     router.replace("/page/end");    
   }
