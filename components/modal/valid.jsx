@@ -15,7 +15,7 @@ import { changeStatusAnggota } from '../../api';
 const OBJ_MODAL1 = actionModal("Modal1");
 
 const soc = new Socket();
-const eng = soc.con("http://34.101.95.115:3400");
+const eng = soc.con("https://pemilo.id");
 //const eng = soc.con("http://34.101.95.115:9999");
 //const eng = soc.con("http://127.0.0.1:9999");
 //const eng = soc.con("http://20bf55cfbc86.ngrok.io");
